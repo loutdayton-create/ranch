@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gallery - Cottonwood Ranch</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Lato:400,700&display=swap" rel="stylesheet">
+		<style>
+    :root {
+      --sage-green: #8fa68e;
+      --warm-brown: #8b6f47;
+      --cream: #f5f2e8;
+      --rust-orange: #d4926c;
+      --dark-brown: #6b5b47;
+      --light-tan: #d2b48c;
+      --deep-forest: #3a5a37;
+    }
+
+    /* Lightbox styles */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(32,92,32,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .lightbox-content {
+	  position: relative;
+	  max-width: 90vw;
+	  max-height: 90vh;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  min-height: 400px;
+	}
+	.lightbox-btn.prev, .lightbox-btn.next {
+		position: fixed;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 10002;
+		pointer-events: auto;
+		display: flex;
+	}
+	.lightbox-btn.prev {
+		left: 40px;
+	}
+	.lightbox-btn.next {
+		right: 40px;
+	}
+    .lightbox-img {
+      max-width: 80vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      background: #fff;
+      display: block;
+    }
+    .lightbox-btn {
+	  background: #3a5a37;
+	  color: #fff;
+	border: none;
+	  border-radius: 50%;
+	  width: 80px;
+	  height: 80px;
+	  font-size: 3.2em;
+	  font-family: 'Montserrat', Arial, sans-serif;
+	  font-weight: 900;
+	  cursor: pointer;
+	  box-shadow: 0 4px 18px rgba(32,92,32,0.22);
+	  transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+	  outline: none;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  user-select: none;
+	  z-index: 10002;
+	  letter-spacing: -0.1em;
+  }
+    }
+    .lightbox-btn:hover, .lightbox-btn:focus {
+	background: #8b6f47;
+	color: #fff;
+	border-color: #fff;
+	box-shadow: 0 6px 24px rgba(139,111,71,0.22);
+    }
+	.lightbox-btn.prev { left: 40px; }
+	.lightbox-btn.next { right: 40px; }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(255,255,255,0.85);
+      color: #205c20;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.5em;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(32,92,32,0.13);
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+    .lightbox-close:hover, .lightbox-close:focus {
+      background: #e3fae3;
+      color: #184d18;
+      box-shadow: 0 4px 16px rgba(32,92,32,0.18);
+    }
+    @media (max-width: 700px) {
+      .lightbox-btn.prev { left: 10px; }
+      .lightbox-btn.next { right: 10px; }
+      .lightbox-img { max-width: 98vw; max-height: 60vh; }
+    }
+		body {
+			margin: 0;
+			font-family: 'Lato', Arial, sans-serif;
+			background: #f7f9fc;
+			color: #222;
+		}
+		.navbar {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			width: 100%;
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: linear-gradient(135deg, #4a6a47, #3a5a37);
+			height: 110px;
+			padding: 0 2em;
+			box-shadow: 0 2px 8px rgba(139,111,71,0.08);
+			margin: 0;
+			border-radius: 0;
+		}
+				.nav-logo {
+					height: 80px;
+					width: auto;
+					margin-right: 2em;
+				}
+		.nav-btn-group {
+			display: flex;
+			gap: 1.0em;
+		}
+		.nav-btn {
+      width: 120px;
+      height: 48px;
+      background: var(--cream);
+      color: var(--warm-brown);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05em;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(27,28,60,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+      outline: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0;
+      white-space: nowrap;
+    }
+		.nav-btn:hover, .nav-btn:focus {
+			background: linear-gradient(135deg, #4a6a47, #3a5a37);
+			color: white;
+			border: 2px solid white;
+			box-shadow: 0 2px 8px rgba(93,78,55,0.13);
+		}
+		@media (max-width: 900px) {
+			.navbar {
+				flex-direction: column;
+				height: auto;
+				padding: 1em;
+			}
+			.nav-logo {
+				margin-bottom: 1em;
+			}
+		}
+		@media (max-width: 600px) {
+			.nav-btn {
+				width: 100px;
+				font-size: 0.95em;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+  <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
+    <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo">
+    <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
+  </button>
+  <div class="nav-btn-group">
+      <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
+      <a href="heritage.html" class="nav-btn">Heritage</a>
+      <a href="adventures.html" class="nav-btn">Adventures</a>
+      <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </nav>
+			<main>
+				<div style="display:flex;justify-content:center;margin:2em auto 1em auto;">
+						<h1 style="font-family:'Montserrat',Arial,sans-serif;font-size:2.2em;font-weight:700;color:#8b6f47;text-align:center;margin:0;padding-bottom:0.2em;text-shadow:0 2px 8px rgba(0,0,0,0.08);border-bottom:6px solid #d4926c;display:inline-block;">Photo Gallery</h1>
+				</div>
+				<div style="text-align:center;margin-bottom:2em;max-width:700px;margin-left:auto;margin-right:auto;color:#3a5a37;font-family:'Crimson Text',serif;font-size:1.18em;line-height:1.5;">
+					Experience the spirit of Cottonwood Ranch through our favorite moments—horses, sunsets, family, and the wild Wyoming landscape.
+				</div>
+<style>
+	.gallery-img {
+		transition: transform 0.35s cubic-bezier(.25,.82,.45,1), box-shadow 0.35s cubic-bezier(.25,.82,.45,1);
+	}
+	.gallery-img:hover {
+		transform: scale(1.045);
+		box-shadow: 0 8px 32px rgba(32,92,32,0.18);
+		z-index: 2;
+	}
+	figcaption {
+		font-family: 'Montserrat', Arial, sans-serif;
+		font-size: 1.13em;
+		color: #205c20;
+		text-align: center;
+		margin-top: 0.5em;
+		background: rgba(245,242,232,0.85);
+		border-radius: 8px;
+		padding: 0.3em 0.5em;
+		display: inline-block;
+		box-shadow: 0 1px 4px rgba(32,92,32,0.07);
+	}
+	@media (max-width: 700px) {
+		.gallery-grid {
+			grid-template-columns: 1fr !important;
+			gap: 1.2em !important;
+		}
+		figcaption {
+			font-size: 1em;
+			padding: 0.25em 0.4em;
+		}
+	}
+</style>
+				</div>
+				<div class="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2em;max-width:1200px;margin:0 auto 3em auto;padding:0 1em;">
+	 <figure style="margin:0;">
+		 <img src="images/calfnap.jpg" alt="Calf Nap" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+		 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Getting Cozy</figcaption>
+	 </figure>
+	 <figure style="margin:0;">
+		 <img src="images/horsehat.jpg" alt="Horse Hat" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+		 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Blackfoot Shows Off His New Hat</figcaption>
+	 </figure>
+	 <figure style="margin:0;">
+		 <img src="images/lakota.jpg" alt="Lakota" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+		 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Lakota Waits To Get Saddled</figcaption>
+	 </figure>
+	 <figure style="margin:0;">
+		 <img src="images/barn.jpg" alt="Barn" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+		 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Ol' Barn</figcaption>
+	 </figure>
+	 <figure style="margin:0;">
+		 <img src="images/calf.jpg" alt="Calf" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+		 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Lil' Calf Tells Us He's Hungry</figcaption>
+	 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/blackhorse.jpeg" alt="Black Horse" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Brumbie Champs At The Bit</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/theboys.jpg" alt="Cabin Group" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Dayton Boys Out For a Winter Ride</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/sunset.jpeg" alt="Sunset" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Sunsets are 10/10</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/tractor.jpg" alt="Tractor" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">They Don't Build Them Like They Used To</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/bridger jumping.jpeg" alt="Bridger Jumping" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Cowboys Cool Off In The Bear River</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/nicesunset.jpeg" alt="Nice Sunset" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Sunset Showoff pt.2</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/groupcabin.JPG" alt="Group Cabin" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">College Students Take A Study Break In Wyoming</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/closeup.JPG" alt="Closeup" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Nothing Like A Horses Winter Coat</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/sublett.jpeg" alt="Sublett" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Checking On The Herd</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/saddle.jpg" alt="Saddle" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Saddle Takes A Break After A Long Ride</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/blackhorseface.jpeg" alt="Black Horse Face" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Ain't She Pretty</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/blackoverlook.jpeg" alt="Black Overlook" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Brumbie Making Sure Everything Is In Order</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/cottonwoods.jpg" alt="Cottonwoods" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Cottonwoods and Axe Throwing Course</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/holdenthefort.jpeg" alt="Holden The Fort" class="gallery-img" style="width:100%;height:260px;object-fit:cover;object-position:top;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">No Breaks</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/horsebackride.jpg" alt="Horseback Ride" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Horseback In The Ranch Yard</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/nightsky.jpg" alt="Night Sky" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">No Light Pollution, shot on iphone</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/wintercowboy.jpeg" alt="Winter Cowboy" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Winter Cowboy</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/boysatsublett.jpg" alt="Boys at Sublett" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Boys at Sublett</figcaption>
+						 </figure>
+						 <figure style="margin:0;">
+							 <img src="images/ropesub.jpg" alt="Roping at Sublett" class="gallery-img" style="width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;cursor:pointer;">
+							 <figcaption style="font-family:'Montserrat',Arial,sans-serif;font-size:1.08em;color:#205c20;text-align:center;margin-top:0.5em;">Checking the Herd</figcaption>
+						 </figure>
+				</div>
+				<div class="lightbox-overlay" id="lightbox">
+					<div class="lightbox-content">
+								<button class="lightbox-btn prev" id="lightbox-prev" aria-label="Previous Photo"><span style="font-size:1.2em;font-weight:900;display:inline-block;transform:translateY(2px);">&#x25C0;</span></button>
+								<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;">
+									<img src="" alt="Gallery Photo" class="lightbox-img" id="lightbox-img">
+									<div id="lightbox-caption" style="margin-top:1em;font-size:1.15em;color:#fff;font-family:'Montserrat',Arial,sans-serif;text-shadow:0 2px 8px rgba(32,92,32,0.18);background:rgba(32,92,32,0.45);padding:0.5em 1.5em;border-radius:8px;">Fill This</div>
+								</div>
+								<button class="lightbox-btn next" id="lightbox-next" aria-label="Next Photo"><span style="font-size:1.2em;font-weight:900;display:inline-block;transform:translateY(2px);">&#x25B6;</span></button>
+								<button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+					</div>
+				</div>
+			<section style="max-width:1200px;margin:0 auto 3em auto;padding:0 1em;">
+				<div style="background:#205c20;padding:1.2em 0 1em 0;border-radius:14px;box-shadow:0 2px 12px rgba(32,92,32,0.13);margin:2.5em 0 2em 0;">
+					<h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2em;font-weight:700;color:#fff;text-align:center;margin:0 0 0.5em 0;">Video Gallery</h2>
+					<div style="font-family:'Lato',Arial,sans-serif;font-size:1.15em;color:#fff;text-align:center;margin-bottom:0.5em;">As Seen On Our TikTok and Instagram</div>
+					<div style="font-family:'Lato',Arial,sans-serif;font-size:1em;color:#fff;text-align:center;margin-bottom:0;">Not All Video Clips Are Taken On The Cottonwood Ranch Or Are Of Activities And Event Offered To Guests</div>
+				</div>
+				<div class="video-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:2em;">
+					<!-- Example videos, replace or add more as needed -->
+					<div class="video-item" style="display:flex;flex-direction:column;align-items:center;">
+						<video src="images/0716.mov" controls style="width:100%;max-width:380px;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;"></video>
+						<div class="video-caption" style="margin-top:0.5em;font-size:1.05em;color:#205c20;font-family:'Montserrat',Arial,sans-serif;text-align:center;">Glimpes 1</div>
+					</div>
+					<div class="video-item" style="display:flex;flex-direction:column;align-items:center;">
+						<video src="images/RANCHAD.mov" controls style="width:100%;max-width:380px;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;"></video>
+						<div class="video-caption" style="margin-top:0.5em;font-size:1.05em;color:#205c20;font-family:'Montserrat',Arial,sans-serif;text-align:center;">Glimpes 2</div>
+					</div>
+				</div>
+			</section>
+			</main>
+			<script>
+		// Show/hide lightbox arrows with lightbox
+		function setLightboxArrowsVisible(visible) {
+			const prevBtn = document.getElementById('lightbox-prev');
+			const nextBtn = document.getElementById('lightbox-next');
+			if (prevBtn && nextBtn) {
+				prevBtn.style.display = visible ? 'flex' : 'none';
+				nextBtn.style.display = visible ? 'flex' : 'none';
+			}
+		}
+					// Gallery images
+					const galleryImages = Array.from(document.querySelectorAll('.gallery-img'));
+					const lightbox = document.getElementById('lightbox');
+					const lightboxImg = document.getElementById('lightbox-img');
+					const prevBtn = document.getElementById('lightbox-prev');
+					const nextBtn = document.getElementById('lightbox-next');
+					const closeBtn = document.getElementById('lightbox-close');
+					const lightboxCaption = document.getElementById('lightbox-caption');
+					let currentIndex = 0;
+
+								// Sync captions with gallery figcaptions
+								function getGalleryCaptions() {
+									return Array.from(document.querySelectorAll('.gallery-grid figcaption')).map(caption => caption.textContent.trim());
+								}
+								let galleryCaptions = getGalleryCaptions();
+
+					function showLightbox(index) {
+								currentIndex = index;
+									lightboxImg.src = galleryImages[index].src;
+									lightboxImg.alt = galleryImages[index].alt;
+									if (galleryCaptions.length > index) {
+										lightboxCaption.textContent = galleryCaptions[index];
+									} else {
+										lightboxCaption.textContent = '';
+									}
+									lightbox.style.display = 'flex';
+									setLightboxArrowsVisible(true);
+									document.body.style.overflow = 'hidden';
+					}
+
+					function hideLightbox() {
+						lightbox.style.display = 'none';
+						setLightboxArrowsVisible(false);
+						document.body.style.overflow = '';
+					}
+
+					function showPrev() {
+						currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+						showLightbox(currentIndex);
+					}
+
+					function showNext() {
+						currentIndex = (currentIndex + 1) % galleryImages.length;
+						showLightbox(currentIndex);
+					}
+
+					galleryImages.forEach((img, i) => {
+						img.addEventListener('click', () => showLightbox(i));
+					});
+					prevBtn.addEventListener('click', showPrev);
+					nextBtn.addEventListener('click', showNext);
+					closeBtn.addEventListener('click', hideLightbox);
+					lightbox.addEventListener('click', (e) => {
+						if (e.target === lightbox) hideLightbox();
+					});
+					document.addEventListener('keydown', (e) => {
+						if (lightbox.style.display === 'flex') {
+							if (e.key === 'ArrowLeft') showPrev();
+							if (e.key === 'ArrowRight') showNext();
+							if (e.key === 'Escape') hideLightbox();
+						}
+					});
+			</script>
+</body>
+</html>
+<footer class="footer" style="background:#3a5a37;color:#fff;text-align:center;padding:2em 1em;font-size:1em;letter-spacing:0.02em;margin-top:3em;border-radius:0 0 12px 12px;">
+	&copy; 2025 Cottonwood Ranch &mdash; Cokeville, Wyoming &mdash; All rights reserved.<br>
+	<div style="margin-top:1em;display:flex;gap:2em;justify-content:center;flex-wrap:wrap;align-items:center;">
+		<a href="contact.html" style="color:#d2b48c;text-decoration:none;">📧 Contact Us</a>
+		<a href="book.html" style="color:#d2b48c;text-decoration:none;">Book Now</a>
+		<span style="color:#d2b48c;">📍 Cokeville, WY</span>
+	</div>
+</footer>

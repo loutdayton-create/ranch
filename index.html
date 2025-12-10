@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Cottonwood Ranch</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --sage-green: #8fa68e;
+      --warm-brown: #8b6f47;
+      --cream: #f5f2e8;
+      --rust-orange: #d4926c;
+      --dark-brown: #6b5b47;
+      --light-tan: #d2b48c;
+      --deep-forest: #3a5a37;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #4a6a47, #3a5a37);
+      height: 110px;
+      padding: 0 2em;
+      box-shadow: 0 2px 8px rgba(139,111,71,0.08);
+      margin: 0;
+      border-radius: 0;
+    }
+    .nav-logo {
+      height: 80px;
+      width: auto;
+      margin-right: 2em;
+    }
+    .nav-btn-group {
+      display: flex;
+      gap: 1.0em;
+    }
+    .nav-btn {
+      width: 120px;
+      height: 48px;
+      background: var(--cream);
+      color: var(--warm-brown);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05em;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(27,28,60,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+      outline: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-btn:hover, .nav-btn:focus {
+      background: linear-gradient(135deg, #4a6a47, #3a5a37);
+      color: white;
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(93,78,55,0.13);
+    }
+    .nav-btn, .book-now-btn { background: #fff; color: #1565c0; font-weight: 700; font-size: 1.05em; border: none; border-radius: 0; width: 100%; height: 100%; padding: 0; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s, color 0.18s, background 0.18s; box-shadow: 0 2px 8px rgba(27,28,60,0.08); text-decoration: none; display: flex; align-items: center; justify-content: center; text-align: center; will-change: transform; font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
+      <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo">
+      <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
+    </button>
+    <div class="nav-btn-group">
+        <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
+        <a href="heritage.html" class="nav-btn">Heritage</a>
+        <a href="adventures.html" class="nav-btn">Adventures</a>
+    <a href="gallery.html" class="nav-btn">Gallery</a>
+        <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+      </div>
+  </nav>
+  <div class="page-indicator">Home</div>
+</body>
+</html>

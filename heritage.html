@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage | Cottonwood Ranch</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Lato:400,700|Playfair+Display:700,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage-green: #8fa68e;
+      --warm-brown: #8b6f47;
+      --cream: #f5f2e8;
+      --rust-orange: #d4926c;
+      --dark-brown: #6b5b47;
+      --light-tan: #d2b48c;
+      --deep-forest: #3a5a37;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      letter-spacing: 0.5px;
+      background-color: #f9f9f6; /* Light beige */
+      color: #222; /* Darker text for better contrast */
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #4a6a47, #3a5a37);
+      height: 110px;
+      padding: 0 2em;
+      box-shadow: 0 2px 8px rgba(139,111,71,0.08);
+      margin: 0;
+      border-radius: 0;
+    }
+    .nav-logo {
+      height: 80px;
+      width: auto;
+      margin-right: 2em;
+    }
+    .nav-btn-group {
+      display: flex;
+      gap: 1.0em;
+    }
+    .nav-btn {
+      width: 120px;
+      height: 48px;
+      background: var(--cream);
+      color: var(--warm-brown);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05em;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(27,28,60,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+      outline: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0;
+      white-space: nowrap;
+    }
+    .nav-btn:hover, .nav-btn:focus {
+      background: linear-gradient(135deg, #4a6a47, #3a5a37);
+      color: white;
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(93,78,55,0.13);
+    }
+    a:hover .nav-logo, a:focus .nav-logo {
+      background: #e3fae3;
+      box-shadow: 0 2px 8px rgba(27,28,60,0.13);
+      transform: scale(1.07);
+    }
+    .hero {
+  background: url('images/oldgreen.jpg') center/cover no-repeat;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4em 1em 2em 1em;
+      text-align: center;
+    }
+    .hero-textbox {
+  background: rgba(255,255,255,0.80);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(32,92,32,0.10);
+      padding: 2em 2.5em;
+      display: inline-block;
+      max-width: 700px;
+      margin-bottom: 2em;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #205c20;
+      margin-bottom: 0.3em;
+      letter-spacing: 0.04em;
+    }
+    .hero-desc {
+      font-size: 1.2em;
+      color: #333;
+      max-width: 650px;
+      margin-bottom: 1em;
+      line-height: 1.5;
+    }
+    .flag-row {
+      display: flex;
+      gap: 2em;
+      justify-content: center;
+      margin-bottom: 2em;
+    }
+    .heritage-flag-img {
+      width: 220px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(32,92,32,0.10);
+      border: 2px solid #e3fae3;
+      background: #fff;
+    }
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3em 1em;
+      border-bottom: 1px solid #e3fae3;
+    }
+    .section-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2em;
+      font-weight: 700;
+      color: #205c20;
+      margin-bottom: 1em;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+    .feature-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center;
+      margin-top: 2em;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(32,92,32,0.07);
+      padding: 2em 1.5em;
+      max-width: 320px;
+      flex: 1 1 280px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    .feature-card:hover, .feature-card:focus {
+      background: #e3fae3;
+      box-shadow: 0 4px 18px rgba(32,92,32,0.22);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .feature-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.25em;
+      font-weight: 700;
+      color: #205c20;
+      margin-bottom: 0.5em;
+    }
+    .feature-desc {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 1em;
+      line-height: 1.5;
+    }
+    .footer {
+      background: #205c20;
+      color: #fff;
+      text-align: center;
+      padding: 2em 1em;
+      font-size: 1em;
+      letter-spacing: 0.02em;
+      margin-top: 3em;
+    }
+    @media (max-width: 900px) {
+      .feature-cards {
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+      }
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1em;
+      }
+      .nav-logo {
+        margin-bottom: 1em;
+      }
+    }
+    @media (max-width: 768px) {
+    body {
+      font-size: 0.9em;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.75em;
+    }
+
+    h3 {
+      font-size: 1.5em;
+    }
+
+    nav a {
+      display: block;
+      margin: 0.5em 0;
+    }
+
+    section {
+      padding: 1em;
+    }
+  }
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 1.5em;
+      }
+      .section-title {
+        font-size: 1.1em;
+      }
+      .feature-card {
+        padding: 1.2em 0.7em;
+      }
+      .nav-btn {
+        width: 100px;
+        font-size: 0.95em;
+      }
+      .heritage-flag-img {
+        width: 120px;
+        height: 80px;
+      }
+    }
+
+    h1, h2, h3 {
+    color: var(--sage-green);
+  }
+
+  a {
+    color: var(--sage-green);
+  }
+
+  a:hover {
+    text-decoration: none; /* Remove underline on hover */
+  }
+
+  section {
+    padding: 2em;
+    margin: 2em 0;
+  }
+
+  figure {
+    margin: 2em 0;
+    text-align: center;
+  }
+
+  figcaption {
+    margin-top: 0.5em;
+    font-style: italic;
+    color: #555;
+  }
+
+  nav a {
+    color: #333;
+    text-decoration: none;
+    padding: 0.5em 1em;
+  }
+
+  nav a.active {
+    color: var(--sage-green);
+    font-weight: bold;
+    border-bottom: 2px solid var(--sage-green);
+  }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+  <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
+    <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo">
+    <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
+  </button>
+  <div class="nav-btn-group">
+      <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
+      <a href="heritage.html" class="nav-btn">Heritage</a>
+      <a href="adventures.html" class="nav-btn">Adventures</a>
+  <a href="gallery.html" class="nav-btn">Gallery</a>
+      <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="hero-textbox">
+      <h1 class="hero-title">ROOTED IN THE MOUTAIN WEST</h1>
+      <div class="hero-desc">
+        Riding For The Brand Since 1912
+      </div>
+    </div>
+    <div class="flag-row">
+  <img src="images/amerflag.png" alt="American Flag" class="heritage-flag-img">
+  <img src="images/wyoflag.png" alt="Wyoming Flag" class="heritage-flag-img">
+    </div>
+  </section>
+  <section class="section">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 2.5em; flex-wrap: wrap; margin: 3em 0 2em 0;">
+      <img src="images/Grandma Lois Small.jpeg" alt="Grandma Lois" style="max-width:520px;width:38vw;min-width:320px;border-radius:20px;box-shadow:0 6px 32px rgba(32,92,32,0.18);background:#fff;flex-shrink:0;">
+      <div style="flex:1;min-width:280px;font-size:1.25em;color:var(--sage-green);font-family:'Montserrat',Arial,sans-serif;font-weight:600;">Lois Taylor Dayton As A Young Girl Sits On A Horse With Siblings And Cousins. Circa 1915</div>
+    </div>
+  </section>
+  <section>
+  <h1 style="text-align:center;font-family:'Playfair Display', serif;font-size:2.5em;font-weight:700;color:#205c20;margin:2em 0;">Our Heritage</h1>
+  <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">Dayton Land and Livestock has a rich history rooted in tradition and hard work. Our story is one of dedication, resilience, and a deep connection to the land we are privileged to steward.</p>
+
+  <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2em;font-weight:700;color:var(--sage-green);margin-bottom:1em;text-align:center;">Generations of Ranching</h2>
+  <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">For over a century, our family has been dedicated to preserving the land and way of life that defines the Mountain West. We take pride in our heritage and strive to honor it in all that we do.</p>
+
+  <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2em;font-weight:700;color:var(--sage-green);margin-bottom:1em;text-align:center;">Commitment to Sustainability</h2>
+  <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">We believe in sustainable practices that ensure the health of our ranch and the environment for generations to come. Our commitment to the land is reflected in our stewardship practices and our dedication to preserving the natural beauty of the Mountain West.</p>
+
+  <h3 style="font-family:'Montserrat',Arial,sans-serif;font-size:1.8em;font-weight:600;color:var(--sage-green);margin-bottom:1em;text-align:center;">Looking to the Future</h3>
+  <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">As we move forward, we remain committed to our values and to the legacy of excellence that has been the hallmark of Dayton Land and Livestock. We invite you to be a part of our story and to experience the beauty and adventure of the Mountain West with us.</p>
+</section>
+<figure>
+  <img src="images/oldbarn.jpg" alt="Historic barn on the ranch" style="width:100%; height:auto;">
+  <figcaption>Our historic barn, a symbol of our ranching heritage.</figcaption>
+</figure>
+
+<figure>
+  <img src="images/cows.MOV" alt="Cattle grazing on the ranch" style="width:100%; height:auto;">
+  <figcaption>Cattle grazing peacefully on our sustainable pastures.</figcaption>
+</figure>
+<section>
+  <h2 style="text-align:center;font-family:'Montserrat',Arial,sans-serif;font-size:2em;font-weight:700;color:var(--sage-green);margin:3em 0 1em 0;">Join Our Journey</h2>
+  <p style="max-width:600px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">Discover the legacy of Dayton Land and Livestock. Be part of our story.</p>
+  <div style="text-align:center;">
+    <a href="contact.html" style="display: inline-block; padding: 0.75em 1.5em; background-color: var(--sage-green); color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Contact Us</a>
+  </div>
+</section>
+  <footer class="footer">
+    &copy; 2025 Cottonwood Ranch &mdash; All rights reserved.<br>
+    <a href="contact.html" style="color:#fff;">Contact Us</a>
+  </footer>
+<footer style="background-color: #333; color: white; padding: 1.5em; text-align: center;">
+  <p>© 2025 Dayton Land and Livestock. All rights reserved.</p>
+  <p>Follow us on:
+    <a href="#" style="color: var(--sage-green); text-decoration: none;">Facebook</a> |
+    <a href="#" style="color: var(--sage-green); text-decoration: none;">Instagram</a>
+  </p>
+</footer>
+</body>
+</html>

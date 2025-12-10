@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book | Cottonwood Ranch</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Lato:400,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage-green: #8fa68e;
+      --warm-brown: #8b6f47;
+      --cream: #f5f2e8;
+      --rust-orange: #d4926c;
+      --dark-brown: #6b5b47;
+      --light-tan: #d2b48c;
+      --deep-forest: #3a5a37;
+    }
+
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #f7f9fc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #4a6a47, #3a5a37);
+      height: 110px;
+      padding: 0 2em;
+      box-shadow: 0 2px 8px rgba(139,111,71,0.08);
+      margin: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      padding-bottom: 0.2em;
+      box-shadow: 0 2px 8px rgba(58,90,55,0.10);
+    }
+    .nav-logo {
+      height: 80px;
+      width: auto;
+      margin-right: 2em;
+    }
+    .nav-btn-group {
+      display: flex;
+      gap: 1.0em;
+    }
+    .nav-btn {
+      width: 120px; /* Ensure consistent width */
+      height: 48px; /* Ensure consistent height */
+      background: var(--cream);
+      color: var(--warm-brown);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05em;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(27,28,60,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+      outline: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    .nav-btn:hover, .nav-btn:focus {
+      background: linear-gradient(135deg, #4a6a47, #3a5a37);
+      color: white;
+      border: none; /* Remove border changes to prevent layout shifts */
+      box-shadow: 0 2px 8px rgba(93,78,55,0.13);
+    }
+
+    a:hover .nav-logo, a:focus .nav-logo {
+      background: #e3fae3;
+      box-shadow: 0 2px 8px rgba(27,28,60,0.13);
+      transform: scale(1.07);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.5em 1em 0.5em 1em;
+      margin-bottom: 0;
+    }
+    .hero-title {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 3em;
+      font-weight: bold;
+      color: #3a5a37;
+      margin-top: 0.2em;
+      margin-bottom: 0.5em;
+      letter-spacing: 0.04em;
+      z-index: 10;
+      margin-top: 0.2em !important;
+      margin-bottom: 0.2em !important;
+      font-size: 2.7em;
+      letter-spacing: 0.04em;
+      color: #3a5a37;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(58,90,55,0.08);
+    }
+    h1.hero-title {
+      margin-top: 0.2em !important;
+      margin-bottom: 0 !important;
+      font-size: 2.7em;
+      letter-spacing: 0.04em;
+      color: #3a5a37;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(58,90,55,0.08);
+    }
+    .hero-desc {
+      font-size: 1.2em;
+      color: #333;
+      max-width: 650px;
+      margin-bottom: 1em;
+      line-height: 1.5;
+    }
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3em 1em;
+      border-bottom: 1px solid #e3fae3;
+    }
+    .section-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2em;
+      font-weight: 700;
+      color: #205c20;
+      margin-bottom: 1em;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+    .booking-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(32,92,32,0.07);
+      padding: 2em 1.5em;
+      max-width: 400px;
+      margin: 2em auto;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    .booking-card:hover, .booking-card:focus {
+      background: #e3fae3;
+      box-shadow: 0 4px 18px rgba(32,92,32,0.22);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .booking-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.25em;
+      font-weight: 700;
+      color: #205c20;
+      margin-bottom: 0.5em;
+    }
+    .booking-desc {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 1em;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .book-btn {
+      background: #205c20;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 6px;
+      padding: 0.9em 2.2em;
+      box-shadow: 0 2px 8px rgba(32,92,32,0.10);
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.03em;
+      outline: none;
+      margin-top: 1em;
+      text-decoration: none;
+    }
+    .book-btn:hover, .book-btn:focus {
+      background: #184d18;
+      box-shadow: 0 4px 16px rgba(32,92,32,0.18);
+    }
+    .footer {
+      background: #3a5a37;
+      color: #fff;
+      text-align: center;
+      padding: 2em 1em;
+      font-size: 1em;
+      letter-spacing: 0.02em;
+      margin-top: 3em;
+      border-radius: 0 0 12px 12px;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: underline;
+      margin: 0 0.5em;
+    }
+
+    .reserve-title {
+      text-align: center;
+      color: #3a5a37;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-top: 0.5em;
+      margin-bottom: 0.2em;
+      letter-spacing: 0.03em;
+    }
+    .reserve-subtitle {
+      text-align: center;
+      color: #6b5b47;
+      font-size: 1.15em;
+      margin-bottom: 1.2em;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+    .scroll-btn {
+      display: block;
+      margin: 0 auto 1.2em auto !important;
+      padding: 1em 2em;
+      background-color: #d4926c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.15em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+      transition: background-color 0.2s, transform 0.2s;
+      animation: pulse 1.2s infinite;
+      letter-spacing: 0.03em;
+    }
+    .scroll-btn:hover {
+      background-color: #eab892;
+      transform: scale(1.07);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .lodgify-box {
+      margin: 2em auto 2em auto;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(32,92,32,0.13);
+      padding: 2em 1em;
+      border: 2px solid #8fa68e;
+      text-align: center;
+    }
+    .lodgify-title {
+      font-family: 'Playfair Display', serif;
+      color: #3a5a37;
+      font-size: 1.4em;
+      font-weight: 700;
+      margin-bottom: 1em;
+    }
+    #important-info {
+      max-width: 900px;
+      margin: 2em auto 1.5em auto;
+      padding: 2em;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(32, 92, 32, 0.2);
+      border: 2px solid var(--sage-green);
+    }
+    #important-info h3 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.5em;
+      font-weight: 700;
+      color: var(--sage-green);
+      margin-bottom: 1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    #important-info ul {
+      font-size: 1.1em;
+      color: #333;
+      line-height: 1.8;
+      padding-left: 1.5em;
+      list-style: none;
+    }
+    #important-info ul li {
+      margin-bottom: 0.7em;
+      position: relative;
+      padding-left: 2em;
+    }
+    #important-info ul li:before {
+      position: absolute;
+      left: 0;
+      font-size: 1.1em;
+    }
+    #important-info ul li:nth-child(1):before { content: '✅'; }
+    #important-info ul li:nth-child(2):before { content: '🛒'; }
+    #important-info ul li:nth-child(3):before { content: '🍽️'; }
+    #important-info ul li:nth-child(4):before { content: '🐾'; }
+    #important-info ul li:nth-child(5):before { content: '🕒'; }
+    #important-info ul li:nth-child(6):before { content: '🚗'; }
+    #important-info ul li:nth-child(7):before { content: '📞'; }
+    #important-info ul li:nth-child(8):before { content: '🎣'; }
+    #important-info ul li:nth-child(9):before { content: '🚭'; }
+    #important-info ul li:nth-child(10):before { content: '🛏️'; }
+    #important-info ul li:nth-child(11):before { content: '🏥'; }
+    #important-info ul li:nth-child(12):before { content: '🍔'; }
+    .trust-blurb {
+      max-width: 700px;
+      margin: 2em auto 0 auto;
+      background: #f5f2e8;
+      border-left: 6px solid #8fa68e;
+      border-radius: 8px;
+      padding: 1.2em 2em;
+      font-size: 1.1em;
+      color: #3a5a37;
+      font-style: italic;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    window.onload = function() {
+      window.scrollTo(0, 0);
+    };
+    function scrollToImportantInfo() {
+      const target = document.getElementById('important-info');
+      const offset = -150; // Adjust to stop slightly higher
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = target.getBoundingClientRect().top;
+      const targetPosition = elementRect - bodyRect + offset;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+  <div class="top-accent"></div>
+  <nav class="navbar">
+  <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
+    <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo">
+    <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
+  </button>
+  <div class="nav-btn-group">
+      <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
+      <a href="heritage.html" class="nav-btn">Heritage</a>
+      <a href="adventures.html" class="nav-btn">Adventures</a>
+  <a href="gallery.html" class="nav-btn">Gallery</a>
+      <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </nav>
+  <div class="reserve-title">Reserve Your Stay!</div>
+  <style>
+    .fog-logo {
+      display: inline-block;
+      margin: 0 auto 1.2em auto;
+      max-width: 180px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(32,92,32,0.15), 0 1.5px 8px rgba(139,111,71,0.08);
+      transition: transform 0.22s cubic-bezier(.4,2,.6,1), box-shadow 0.22s, filter 0.22s;
+    }
+    .fog-logo:hover, .fog-logo:focus {
+      transform: scale(1.06) rotate(-2deg);
+      box-shadow: 0 8px 32px rgba(32,92,32,0.22), 0 2px 12px rgba(139,111,71,0.13);
+      filter: brightness(1.07) saturate(1.1);
+    }
+  </style>
+  <div class="reserve-subtitle">Book your authentic western experience at Cottonwood Ranch. We look forward to hosting you!</div>
+  <button onclick="scrollToImportantInfo()" class="scroll-btn" aria-label="View important information">View Important Information</button>
+  <div class="lodgify-box">
+  <div style="text-align:center;margin:2.5em auto 1.5em auto;">
+  </div>
+    <div class="lodgify-title">Book Your Dates</div>
+    <iframe src="https://www.lodgify.com/book-widget/YOUR_PROPERTY_ID" width="100%" height="600" frameborder="0" style="border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);"></iframe>
+  </div>
+  <div class="logo-box">
+    <img src="images/foglogo.png" alt="Cottonwood Ranch Fog Logo" class="logo-box-img" />
+  </div>
+  <style>
+    .logo-box {
+      max-width: 900px;
+      margin: 2.5em auto 1.5em auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(32,92,32,0.13), 0 2px 12px rgba(139,111,71,0.10);
+      padding: 1.5em 1em;
+      text-align: center;
+      border: 2px solid #8fa68e;
+    }
+    .logo-box-img {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(32,92,32,0.10);
+      object-fit: contain;
+    }
+  </style>
+  <div class="trust-blurb">
+    “We had an amazing stay! The ranch is beautiful, the hosts are welcoming, and the experience was unforgettable.”<br>
+    <span style="font-size:0.95em; color:#6b5b47;">— Recent Guest</span>
+  </div>
+  <div id="important-info">
+    <h3>IMPORTANT INFORMATION</h3>
+    <ul>
+      <li>Reservations are not final until confirmed by ranch staff</li>
+      <li>There is no grocery store in Cokeville, the nearest one is found in Montpelier Idaho. We recommend stocking up beforehand.</li>
+      <li>Guests are responsible for their own food and beverages. (If you're caught in a pinch let us know)</li>
+      <li>Pets are always welcome, but please let us know in advance (for the safety of your animals and ranch animals).</li>
+      <li>Some activities are seasonal and subject to availability.</li>
+      <li>Guests are responsible for their own travel arrangements.</li>
+      <li>Contact us for special requests or accessibility needs.</li>
+      <li>For hunting/fishing trips, please review local regulations and licensing requirements.</li>
+      <li>The Cabin interior is a smoke-free environment</li>
+      <li>The Cabin can sleep up to 14 people. Room for RVs is available. Please let us know if you plan to bring an RV, camper, or tents</li>
+      <li>There is a small medical clinic in town for emergencies. The nearest hospital is in Montpelier, Idaho.</li>
+      <li>The Gold Buckle in town is the only restaurant for 30 miles and we HIGHLY recommend it!</li>
+    </ul>
+  </div>
+  <footer class="footer">
+  <img src="images/foglogo.png" alt="Cottonwood Ranch Fog Logo" style="display:block;margin:0 auto 1em auto;max-width:90px;width:100%;height:auto;opacity:0.85;" />
+  &copy; 2025 Cottonwood Ranch &mdash; All rights reserved.<br>
+    <a href="contact.html">Contact Us</a>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+  </footer>
+</body>
+</html>

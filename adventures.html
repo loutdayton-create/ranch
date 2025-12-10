@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adventures | Cottonwood Ranch</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Lato:400,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage-green: #8fa68e;
+      --warm-brown: #8b6f47;
+      --cream: #f5f2e8;
+      --rust-orange: #d4926c;
+      --dark-brown: #6b5b47;
+      --light-tan: #d2b48c;
+      --deep-forest: #3a5a37;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Lato', Arial, sans-serif;
+      background: #f7f9fc;
+      color: #222;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #4a6a47, #3a5a37);
+      height: 110px;
+      padding: 0 2em;
+      box-shadow: 0 2px 8px rgba(139,111,71,0.08);
+      margin: 0;
+      border-radius: 0;
+    }
+    .nav-logo {
+      height: 80px;
+      width: auto;
+      margin-right: 2em;
+    }
+    .nav-btn-group {
+      display: flex;
+      gap: 1.0em;
+    }
+    .nav-btn {
+      width: 120px;
+      height: 48px;
+      background: var(--cream);
+      color: var(--warm-brown);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05em;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(27,28,60,0.07);
+      cursor: pointer;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+      outline: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0;
+      white-space: nowrap;
+    }
+    .nav-btn:hover, .nav-btn:focus {
+      background: linear-gradient(135deg, #4a6a47, #3a5a37);
+      color: white;
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(93,78,55,0.13);
+    }
+    .hero {
+  background: url('images/ropesub.jpg') 50% 70%/cover no-repeat;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4em 1em 2em 1em;
+      text-align: center;
+    }
+    .hero-textbox {
+  background: rgba(255,255,255,0.80);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(32,92,32,0.10);
+      padding: 2em 2.5em;
+      display: inline-block;
+      max-width: 700px;
+      margin-bottom: 2em;
+    }
+    .hero-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #205c20;
+      margin-bottom: 0.3em;
+      letter-spacing: 0.04em;
+    }
+    .hero-desc {
+      font-size: 1.2em;
+      color: #333;
+      max-width: 650px;
+      margin-bottom: 1em;
+      line-height: 1.5;
+    }
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3em 1em;
+      border-bottom: 1px solid #e3fae3;
+    }
+    .section-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2em;
+      font-weight: 700;
+      color: #205c20;
+      margin-bottom: 1em;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+    .adventure-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center;
+      margin-top: 2em;
+    }
+    .adventure-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(32,92,32,0.07);
+      padding: 2em 1.5em;
+      max-width: 320px;
+      flex: 1 1 280px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    .adventure-card:hover, .adventure-card:focus {
+      background: #e3fae3;
+      box-shadow: 0 4px 18px rgba(32,92,32,0.22);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .adventure-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.25em;
+      font-weight: 700;
+      color: #205c20;
+      margin-bottom: 0.5em;
+    }
+    .adventure-desc {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 1em;
+      line-height: 1.5;
+    }
+    .footer {
+      background: #205c20;
+      color: #fff;
+      text-align: center;
+      padding: 2em 1em;
+      font-size: 1em;
+      letter-spacing: 0.02em;
+      margin-top: 3em;
+    }
+    @media (max-width: 900px) {
+      .adventure-cards {
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+      }
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1em;
+      }
+      .nav-logo {
+        margin-bottom: 1em;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 1.5em;
+      }
+      .section-title {
+        font-size: 1.1em;
+      }
+      .adventure-card {
+        padding: 1.2em 0.7em;
+      }
+      .nav-btn {
+        width: 100px;
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+  <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
+    <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo">
+    <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
+  </button>
+  <div class="nav-btn-group">
+      <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
+      <a href="heritage.html" class="nav-btn">Heritage</a>
+      <a href="adventures.html" class="nav-btn">Adventures</a>
+  <a href="gallery.html" class="nav-btn">Gallery</a>
+      <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="hero-textbox">
+      <h1 class="hero-title">Adventures Await</h1>
+      <div class="hero-desc">
+        Explore the wild beauty of Wyoming with horseback riding, fishing, hiking, and more. Every day is an adventure at Cottonwood Ranch.
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <h2 class="section-title">Top Adventures</h2>
+    <div class="adventure-cards">
+      <a href="#" class="adventure-card">
+        <div class="adventure-title">Horseback Riding</div>
+        <div class="adventure-desc">Ride across open fields and scenic trails with our experienced ranch hands.</div>
+      </a>
+      <a href="#" class="adventure-card">
+        <div class="adventure-title">Fishing</div>
+        <div class="adventure-desc">Cast your line in pristine waters and enjoy peaceful moments by the river.</div>
+      </a>
+      <a href="#" class="adventure-card">
+        <div class="adventure-title">Hiking</div>
+        <div class="adventure-desc">Discover breathtaking views and hidden gems on our guided hikes.</div>
+      </a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:2em;justify-content:center;margin:3em 0;">
+      <img src="images/blackhorseface.jpeg" alt="Black Horse Face" style="width:340px;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;">
+      <img src="images/trae.jpeg" alt="Trae" style="width:340px;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;">
+      <img src="images/painters1.jpeg" alt="Painters 1" style="width:340px;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;">
+    </div>
+    </div>
+  </section>
+  <footer class="footer">
+    &copy; 2025 Cottonwood Ranch &mdash; All rights reserved.<br>
+    <a href="contact.html" style="color:#fff;">Contact Us</a>
+  </footer>
+</body>
+</html>
