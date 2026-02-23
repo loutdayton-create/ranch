@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="responsive.css">
   <title>Heritage | Cottonwood Ranch</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Lato:400,700|Playfair+Display:700,400&display=swap" rel="stylesheet">
   <style>
@@ -301,12 +302,12 @@
 </head>
 <body>
   <nav class="navbar">
-  <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
+  <button onclick="location.href='index.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
     <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo">
     <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
   </button>
   <div class="nav-btn-group">
-      <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
+  <a href="index.html" class="nav-btn" id="homeNavBtn">Home</a>
       <a href="heritage.html" class="nav-btn">Heritage</a>
       <a href="adventures.html" class="nav-btn">Adventures</a>
   <a href="gallery.html" class="nav-btn">Gallery</a>
@@ -318,7 +319,7 @@
     <div class="hero-textbox">
       <h1 class="hero-title">ROOTED IN THE MOUTAIN WEST</h1>
       <div class="hero-desc">
-        Riding For The Brand Since 1912
+        Riding For The Brand Since For One Hundred and Fourteen Years
       </div>
     </div>
     <div class="flag-row">
@@ -339,8 +340,6 @@
   <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2em;font-weight:700;color:var(--sage-green);margin-bottom:1em;text-align:center;">Generations of Ranching</h2>
   <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">For over a century, our family has been dedicated to preserving the land and way of life that defines the Mountain West. We take pride in our heritage and strive to honor it in all that we do.</p>
 
-  <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2em;font-weight:700;color:var(--sage-green);margin-bottom:1em;text-align:center;">Commitment to Sustainability</h2>
-  <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">We believe in sustainable practices that ensure the health of our ranch and the environment for generations to come. Our commitment to the land is reflected in our stewardship practices and our dedication to preserving the natural beauty of the Mountain West.</p>
 
   <h3 style="font-family:'Montserrat',Arial,sans-serif;font-size:1.8em;font-weight:600;color:var(--sage-green);margin-bottom:1em;text-align:center;">Looking to the Future</h3>
   <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">As we move forward, we remain committed to our values and to the legacy of excellence that has been the hallmark of Dayton Land and Livestock. We invite you to be a part of our story and to experience the beauty and adventure of the Mountain West with us.</p>
@@ -350,15 +349,39 @@
   <figcaption>Our historic barn, a symbol of our ranching heritage.</figcaption>
 </figure>
 
-<figure>
-  <img src="images/cows.MOV" alt="Cattle grazing on the ranch" style="width:100%; height:auto;">
-  <figcaption>Cattle grazing peacefully on our sustainable pastures.</figcaption>
-</figure>
-<section>
-  <h2 style="text-align:center;font-family:'Montserrat',Arial,sans-serif;font-size:2em;font-weight:700;color:var(--sage-green);margin:3em 0 1em 0;">Join Our Journey</h2>
-  <p style="max-width:600px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">Discover the legacy of Dayton Land and Livestock. Be part of our story.</p>
-  <div style="text-align:center;">
-    <a href="contact.html" style="display: inline-block; padding: 0.75em 1.5em; background-color: var(--sage-green); color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Contact Us</a>
+<section class="about-us">
+  <h2>About Us</h2>
+  <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">
+    Welcome to our ranch, where tradition meets the beauty of the Mountain West. Our story is one of dedication, resilience, and a deep connection to the land we are privileged to steward.
+  </p>
+  <p style="max-width:800px;margin:0 auto 2em auto;font-size:1.1em;color:#333;line-height:1.6;text-align:center;">
+    We are committed to creating unforgettable experiences for our guests, whether it's horseback riding, fishing, or simply enjoying the wide-open spaces. Join us and become part of our story.
+  </p>
+</section>
+
+<!-- Adjusted team section to make boxes larger and display two in a row -->
+<section class="team-section" style="padding: 4em 0; background-color: #f9f9f9;">
+  <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2em; text-align: center;">
+    <div class="team-box" style="background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      <img src="images/person1.jpg" alt="Team Member 1" style="width: 100%; border-radius: 8px;">
+      <h3 style="margin: 1em 0 0.5em; font-size: 1.8em; color: #333;">Team Member 1</h3>
+      <p style="font-size: 1.1em; color: #666;">A short bio about this team member and their role on the ranch.</p>
+    </div>
+    <div class="team-box" style="background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      <img src="images/person2.jpg" alt="Team Member 2" style="width: 100%; border-radius: 8px;">
+      <h3 style="margin: 1em 0 0.5em; font-size: 1.8em; color: #333;">Team Member 2</h3>
+      <p style="font-size: 1.1em; color: #666;">A short bio about this team member and their role on the ranch.</p>
+    </div>
+    <div class="team-box" style="background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      <img src="images/person3.jpg" alt="Team Member 3" style="width: 100%; border-radius: 8px;">
+      <h3 style="margin: 1em 0 0.5em; font-size: 1.8em; color: #333;">Team Member 3</h3>
+      <p style="font-size: 1.1em; color: #666;">A short bio about this team member and their role on the ranch.</p>
+    </div>
+    <div class="team-box" style="background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      <img src="images/lefty.jpg" alt="Team Member 4" style="width: 100%; border-radius: 8px;">
+      <h3 style="margin: 1em 0 0.5em; font-size: 1.8em; color: #333;">Luke (Lou) Dayton</h3>
+      <p style="font-size: 1.1em; color: #666;">Born and raised in Salt Lake City, UT, Luke has always had a passion for the outdoors and ranching.</p>
+    </div>
   </div>
 </section>
   <footer class="footer">
