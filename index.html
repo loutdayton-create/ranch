@@ -594,6 +594,7 @@
   </style>
 </head>
 <body>
+  <div class="site-notice" style="width:100%;background:#d4926c;color:#fff;text-align:center;font-family:'Playfair Display',serif;font-size:1.1em;font-weight:700;padding:0.7em 0.5em;letter-spacing:0.03em;box-shadow:0 2px 8px rgba(139,111,71,0.10);z-index:2000;position:relative;top:0;">This website is still a work in progress. Thanks for your patience!</div>
   <nav class="navbar">
   <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
     <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo logo">
@@ -621,26 +622,23 @@
     </div>
   </section>
 
-  <!-- Section Divider -->
   <div class="section-divider" style="margin-bottom: 4em; margin-top: 2em;">
     <span class="section-divider-icon"></span>
   </div>
   
-  <!-- Video and Why Choose Cottonwood Ranch Side-by-Side -->
   <section style="display: flex; gap: 3em; max-width: 1200px; margin: 4em auto 4em auto; padding: 0 2em; align-items: stretch;">
-    <!-- Video Section -->
     <div class="video-section" style="flex: 0 0 400px; width: 400px; aspect-ratio: 9/16; display: flex; align-items: stretch;">
       <div class="video-container" style="position: relative;">
   <video id="background-video" class="background-video" autoplay muted loop playsinline style="width: 100%; height: 100%; border-radius: 12px; object-fit: contain; cursor: pointer;" onclick="openFullscreen(this);">
     <source src="images/toe the mark ad.mov" type="video/mp4">
     <img src="images/closeup.JPG" alt="Ranch Background" style="width:100%;height:100%;object-fit:contain;">
-  </video>
+  <body>
+    <div class="site-notice" style="width:100%;background:#d4926c;color:#fff;text-align:center;font-family:'Playfair Display',serif;font-size:1.1em;font-weight:700;padding:0.7em 0.5em;letter-spacing:0.03em;box-shadow:0 2px 8px rgba(139,111,71,0.10);z-index:2000;position:relative;top:0;">This website is still a work in progress. Thanks for your patience!</div>
   <button id="pause-btn" style="position: absolute; top: 10px; left: 10px; z-index: 1000; background: rgba(0, 0, 0, 0.7); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: none;">Pause</button>
   <button id="exit-btn" style="position: absolute; top: 10px; right: 10px; z-index: 1000; background: rgba(0, 0, 0, 0.7); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: none;">Exit</button>
 </div>
       <div class="video-overlay"></div>
     </div>
-    <!-- Why Choose Cottonwood Ranch Box -->
     <div style="flex: 1; min-width: 400px; display: flex; align-items: stretch;">
   <div style="background: rgba(245,242,232,0.95); border-radius: 18px; box-shadow: 0 4px 24px rgba(93,78,55,0.20); backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; min-height: 0; width: 100%; box-sizing: border-box; padding: 0;">
         <h2 style="font-family:'Playfair Display',serif;font-size:2em;font-weight:700;color:var(--warm-brown);margin: 1.5em 0 1em 0;">Why Choose Cottonwood Ranch?</h2>
@@ -661,7 +659,6 @@
     </div>
   </section>
 
-  <!-- Reviews Carousel Section -->
   <section style="max-width:700px;margin:6em auto 3em auto;padding:1em 1em 1em 1em;background:rgba(245,242,232,0.95);border-radius:14px;box-shadow:0 2px 12px rgba(93,78,55,0.12);text-align:center;">
   <h2 style="font-family:'Playfair Display',serif;font-size:2.7em;font-weight:900;color:var(--warm-brown);margin-bottom:1em;">Guest Reviews</h2>
   <div id="review-carousel" style="min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 0.7s cubic-bezier(.25,.82,.45,1);opacity:1;"></div>
@@ -670,8 +667,7 @@
   <button id="next-review" style="background:var(--warm-brown);color:var(--cream);border:none;border-radius:50%;width:48px;height:48px;font-size:2em;font-weight:900;cursor:pointer;box-shadow:0 2px 8px rgba(93,78,55,0.18);display:flex;align-items:center;justify-content:center;line-height:1;">&#x25B6;</button>
     </div>
   </section>
-  <!-- New Horizontal Reviews Script -->
-    <script>
+  <script>
     // Simple Reviews Carousel
     const reviews = [
       { text: "Truly remarkable area where this cabin is located. I really enjoyed the seclusion from neighboring towns. Beautiful views and solid night of sleep. Cannot wait to come back.", name: "- Gabriel -Utah" },
@@ -749,7 +745,6 @@
     startAutoAdvance();
     </script>
 
-    <!-- New Horizontal Reviews Script -->
     <script>
     // Initialize the horizontal reviews system
     document.addEventListener('DOMContentLoaded', function() {
@@ -917,7 +912,6 @@
       <img src="images/oldgreen.jpg" alt="Old Green" class="photo-row-img" loading="lazy">
       <img src="images/saddle.jpg" alt="Saddle" class="photo-row-img" loading="lazy">
       <img src="images/sunset.jpeg" alt="Sunset 2" class="photo-row-img" loading="lazy">
-      <!-- Duplicate images for seamless loop -->
       <img src="images/blackhorse.jpeg" alt="Black Horse" class="photo-row-img" loading="lazy">
       <img src="images/theboys.jpg" alt="Cabin Group" class="photo-row-img" loading="lazy">
       <img src="images/sunset.jpeg" alt="Sunset" class="photo-row-img" loading="lazy">
@@ -982,13 +976,10 @@
     </div>
   </footer>
 
-  <!-- Floating Book Now Button -->
   <a href="book.html" class="floating-book-btn">Book Now</a>
   
-  <!-- Scroll to Top Button -->
   <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="background:var(--warm-brown);color:var(--cream);border:none;border-radius:50%;width:48px;height:48px;font-size:2em;font-weight:900;box-shadow:0 2px 8px rgba(93,78,55,0.18);display:flex;align-items:center;justify-content:center;line-height:1;">&#x25B2;</button>
 
-  <!-- Scroll behavior script -->
   <script>
     // Show/hide scroll to top button
     window.addEventListener('scroll', function() {
@@ -1002,71 +993,3 @@
     
     // Add smooth scrolling to all links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
-
-  <!-- JavaScript to handle the visibility of the Book Now button -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const bookNowButton = document.querySelector('.floating-book-btn');
-
-      function handleScroll() {
-        const scrollPosition = window.scrollY;
-  const triggerPosition = document.body.scrollHeight * 0.5;
-
-        if (scrollPosition > triggerPosition) {
-          bookNowButton.classList.add('visible');
-        } else {
-          bookNowButton.classList.remove('visible');
-        }
-      }
-
-      window.addEventListener('scroll', handleScroll);
-    });
-  </script>
-
-  <script>
-  const video = document.getElementById('background-video');
-  const pauseBtn = document.getElementById('pause-btn');
-  const exitBtn = document.getElementById('exit-btn');
-
-  function openFullscreen(videoElement) {
-    videoElement.pause();
-    videoElement.currentTime = 0;
-    videoElement.requestFullscreen();
-    videoElement.play();
-    pauseBtn.style.display = 'block';
-    exitBtn.style.display = 'block';
-  }
-
-  pauseBtn.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-      pauseBtn.textContent = 'Pause';
-    } else {
-      video.pause();
-      pauseBtn.textContent = 'Play';
-    }
-  });
-
-  exitBtn.addEventListener('click', () => {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    }
-  });
-
-  document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) {
-      pauseBtn.style.display = 'none';
-      exitBtn.style.display = 'none';
-    }
-  });
-</script>
-</body>
-</html>
