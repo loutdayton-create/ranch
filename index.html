@@ -598,17 +598,38 @@
   background: var(--warm-brown);
   color: var(--cream);
   text-align: center;
-  padding: 0.5em 1em;
+  padding: 0.5em 3em;
   font-family: 'Playfair Display', serif;
   font-size: 0.95em;
   font-weight: 700;
   letter-spacing: 0.05em;
   box-sizing: border-box;
+  position: relative;
+}
+.wip-banner-close {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 1.2em;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.3em;
+  opacity: 0.8;
+}
+.wip-banner-close:hover {
+  opacity: 1;
 }
   </style>
 </head>
 <body>
-  <div class="wip-banner">🚧 This page is a work in progress 🚧</div>
+  <div class="wip-banner" id="wip-banner">
+    🚧 This site is actively being updated — new content coming soon!
+    <button class="wip-banner-close" onclick="document.getElementById('wip-banner').style.display='none'" aria-label="Dismiss">&#x2715;</button>
+  </div>
   <nav class="navbar">
   <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
     <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo logo">
