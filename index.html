@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Cottonwood Ranch</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="responsive.css">
+  <title>Cottonwood Ranch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
+  /* Western Color Palette */
     :root {
       --sage-green: #8fa68e;
       --warm-brown: #8b6f47;
@@ -15,7 +17,159 @@
       --light-tan: #d2b48c;
       --deep-forest: #3a5a37;
     }
-
+    
+    @keyframes navPulse {
+  0% { background: var(--cream); color: var(--warm-brown); box-shadow: 0 0 0 0 var(--cream); }
+  20% { background: var(--cream); color: var(--warm-brown); box-shadow: 0 0 8px 2px var(--light-tan); }
+  40% { background: var(--light-tan); color: var(--warm-brown); box-shadow: 0 0 16px 4px var(--light-tan); }
+  60% { background: var(--cream); color: var(--warm-brown); box-shadow: 0 0 8px 2px var(--light-tan); }
+  80% { background: var(--light-tan); color: var(--warm-brown); box-shadow: 0 0 16px 4px var(--light-tan); }
+  100% { background: var(--cream); color: var(--warm-brown); box-shadow: 0 0 0 0 var(--cream); }
+    }
+      .nav-btn.pulse {
+  animation: navPulse 1.2s ease-in-out 1;
+    }
+      /* Enhanced Fade-in animation for sections */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1.2s cubic-bezier(.25,.82,.45,1) forwards;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      
+      /* Enhanced Button hover effects */
+      .cta-btn:hover, .nav-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 20px rgba(139,111,71,0.25);
+        transition: all 0.3s cubic-bezier(.25,.82,.45,1);
+      }
+      
+      /* Hover animation for sections */
+      .section:hover {
+        transform: translateY(-2px);
+        transition: transform 0.3s ease;
+      }
+      
+      /* Interactive card hover */
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(93,78,55,0.15);
+        transition: all 0.3s cubic-bezier(.25,.82,.45,1);
+      }
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #f7f9fc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Western Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #3a5a37;
+      margin-bottom: 0.5em;
+    }
+    
+    h1 {
+      font-size: 2.5em;
+      margin-top: 1em;
+    }
+    
+    h2 {
+      font-size: 2em;
+    }
+    
+    h3 {
+      font-size: 1.5em;
+    }
+    
+    .cattle-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      font-weight: 900;
+      color: var(--warm-brown);
+      text-shadow: 1px 1px 2px rgba(93,78,55,0.3);
+      letter-spacing: 0.1em;
+    }
+    /* Floating Book Now Button */
+    .floating-book-btn {
+      position: fixed;
+      bottom: 2em;
+      right: 2em;
+      z-index: 1000;
+      background: var(--warm-brown);
+      color: var(--cream);
+      padding: 0.8em 1.5em;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(139,111,71,0.3);
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      transition: all 0.3s ease;
+      animation: floating 3s ease-in-out infinite;
+    }
+    .floating-book-btn:hover {
+      background: var(--dark-brown);
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(139,111,71,0.4);
+    }
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    /* Scroll to Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 2em;
+      left: 2em;
+      z-index: 999;
+      background: rgba(139,111,71,0.8);
+      color: var(--cream);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(139,111,71,0.3);
+    }
+    .scroll-top.visible {
+      opacity: 1;
+    }
+    .scroll-top:hover {
+      background: var(--warm-brown);
+      transform: scale(1.1);
+    }
+    /* Section Dividers */
+    .section-divider {
+      text-align: center;
+      margin: 3em 0;
+      position: relative;
+    }
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sage-green), transparent);
+    }
+    .section-divider-icon {
+      background: var(--cream);
+      padding: 0 2em;
+      font-size: 2em;
+      color: var(--sage-green);
+    }
     .navbar {
       position: sticky;
       top: 0;
@@ -58,6 +212,8 @@
       outline: none;
       display: flex;
       align-items: center;
+      justify-content: center;
+      text-decoration: none;
     }
     .nav-btn:hover, .nav-btn:focus {
       background: linear-gradient(135deg, #4a6a47, #3a5a37);
@@ -65,24 +221,852 @@
       border: 2px solid white;
       box-shadow: 0 2px 8px rgba(93,78,55,0.13);
     }
-    .nav-btn, .book-now-btn { background: #fff; color: #1565c0; font-weight: 700; font-size: 1.05em; border: none; border-radius: 0; width: 100%; height: 100%; padding: 0; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s, color 0.18s, background 0.18s; box-shadow: 0 2px 8px rgba(27,28,60,0.08); text-decoration: none; display: flex; align-items: center; justify-content: center; text-align: center; will-change: transform; font-family: 'Playfair Display', serif; }
+    .hero {
+      background: url('images/closeup.JPG') center/cover no-repeat;
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4em 1em 2em 1em;
+      text-align: center;
+      position: relative;
+      background-attachment: fixed;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(93,78,55,0.3), rgba(139,111,71,0.2));
+      pointer-events: none;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+    }
+    .video-section {
+      background: var(--cream);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 9 / 16;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .background-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1.0;
+    }
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(32,92,32,0.2), rgba(255,255,255,0.1));
+      pointer-events: none;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5em;
+      font-weight: 900;
+      color: var(--warm-brown);
+      margin-bottom: 0.3em;
+      letter-spacing: 0.02em;
+      text-shadow: 2px 2px 4px rgba(93,78,55,0.1);
+    }
+    .hero-textbox {
+      background: rgba(245,242,232,0.95);
+      border: 3px solid var(--warm-brown);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(93,78,55,0.2);
+      padding: 2em 2.5em;
+      display: inline-block;
+      max-width: 700px;
+      margin-bottom: 2em;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-desc {
+      font-size: 1.5em;
+      color: var(--dark-brown);
+      max-width: 700px;
+      margin-bottom: 2em;
+      line-height: 1.6;
+      font-family: 'Crimson Text', serif;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 0.9em 2em;
+      background-color: #3a5a37;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15em;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(32,92,32,0.10);
+      cursor: pointer;
+      margin: 2em auto 0 auto;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .cta-btn:hover {
+      background-color: #4a6a47;
+    }
+    .section {
+      max-width: 1200px;
+      margin: 0 auto 3.5em auto;
+      padding: 3em 2em 3em 2em;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(32,92,32,0.09);
+    }
+    .section:nth-child(even) {
+      background: rgba(143,166,142,0.13);
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(93,78,55,0.10);
+    }
+    .section:nth-child(odd) {
+      background: rgba(210,180,140,0.10);
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(139,111,71,0.10);
+    }
+    .hero {
+      min-height: 75vh;
+      padding: 6em 2em 4em 2em;
+      margin-bottom: 3.5em;
+    }
+    .photo-row {
+      margin: 0 auto 3.5em auto;
+      padding: 2em 0 2em 0;
+    }
+    .section-divider {
+      margin: 5em 0 5em 0;
+    }
+    @media (max-width: 900px) {
+      .section, .hero, .photo-row {
+        padding-left: 0.5em !important;
+        padding-right: 0.5em !important;
+      }
+      .section {
+        padding-top: 2em;
+        padding-bottom: 2em;
+      }
+      .hero {
+        padding-top: 3em;
+        padding-bottom: 2em;
+      }
+      .photo-row {
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+      font-weight: 700;
+      color: var(--warm-brown);
+      margin-bottom: 1em;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+    .offerings {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center;
+      margin-top: 2em;
+    }
+    .offering {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(27,28,60,0.07);
+      padding: 2em 1.5em;
+      max-width: 320px;
+      flex: 1 1 280px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .offering-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25em;
+      font-weight: 700;
+      color: var(--warm-brown);
+      margin-bottom: 0.5em;
+    }
+    .offering-desc {
+      font-size: 1em;
+      color: var(--dark-brown);
+      margin-bottom: 1em;
+      line-height: 1.5;
+    }
+    .footer {
+      background: #3a5a37;
+      color: #fff;
+      text-align: center;
+      padding: 2em 1em;
+      font-size: 1em;
+      letter-spacing: 0.02em;
+      margin-top: 3em;
+      border-radius: 0 0 12px 12px;
+    }
+    .footer a {
+      color: var(--light-tan);
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .footer a:hover {
+      color: var(--cream);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .photo-row {
+      overflow: hidden;
+      width: 100%;
+      max-width: 1200px;
+  margin: 1em auto 0 auto;
+      padding: 0 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .photo-row-container {
+      display: flex;
+      gap: 2em;
+      align-items: center;
+      animation: photo-scroll 60s linear infinite;
+      will-change: transform;
+    }
+    @keyframes photo-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .photo-row-img {
+      width: 340px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(93,78,55,0.13);
+      border: 2px solid var(--light-tan);
+      background: var(--cream);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .photo-row-img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 18px rgba(139,111,71,0.22);
+    }
+    .tractor-crop {
+      object-position: 50% 80%;
+    }
+    @media (max-width: 900px) {
+      .offerings {
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+      }
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1em;
+      }
+      .nav-logo {
+        margin-bottom: 1em;
+      }
+      .video-text-row {
+        flex-direction: column;
+        gap: 1em;
+      }
+      .section {
+        padding: 1em 0.5em;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2em;
+      }
+      .section-title {
+        font-size: 1.3em;
+      }
+      .offering {
+        padding: 1.2em 0.7em;
+      }
+      .nav-btn {
+        width: 100px;
+        font-size: 0.95em;
+      }
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cta-btn {
+        width: 200px;
+        text-align: center;
+      }
+      .photo-row-img {
+        width: 280px;
+        height: 180px;
+      }
+      .floating-book-btn {
+        bottom: 1em;
+        right: 1em;
+        font-size: 0.9em;
+        padding: 0.7em 1.2em;
+      }
+      .scroll-top {
+        bottom: 1em;
+        left: 1em;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+      }
+    }
+    .offering-btn {
+      text-decoration: none;
+      cursor: pointer;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+      border: none;
+      outline: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .offering-btn:hover, .offering-btn:focus {
+      background: var(--light-tan);
+      box-shadow: 0 4px 18px rgba(139,111,71,0.22);
+      transform: translateY(-2px) scale(1.03);
+    }
+    
+    /* Add fade-in animation for the Book Now button */
+    .floating-book-btn {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .floating-book-btn.visible {
+      opacity: 1;
+    }
+    .video-text-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    margin: 2em 0;
+  }
+  .video-text-row video {
+    max-width: 480px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+  .video-text-row .video-description {
+    max-width: 400px;
+    font-size: 1.15em;
+    color: #333;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    /* Vertically center text with video */
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Add hover effect for the logo */
+.logo {
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Slightly enlarge the logo */
+}
   </style>
 </head>
 <body>
   <nav class="navbar">
-    <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
-      <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo">
-      <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
-    </button>
-    <div class="nav-btn-group">
-        <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
-        <a href="heritage.html" class="nav-btn">Heritage</a>
-        <a href="adventures.html" class="nav-btn">Adventures</a>
-    <a href="gallery.html" class="nav-btn">Gallery</a>
-        <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
-        <a href="contact.html" class="nav-btn">Contact</a>
-      </div>
+  <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
+    <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo logo">
+    <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
+  </button>
+  <div class="nav-btn-group">
+      <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
+      <a href="heritage.html" class="nav-btn">Heritage</a>
+      <a href="adventures.html" class="nav-btn">Adventures</a>
+  <a href="gallery.html" class="nav-btn">Gallery</a>
+  <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
   </nav>
-  <div class="page-indicator">Home</div>
+  <section class="hero fade-in">
+    <div class="hero-textbox">
+      <h1 class="hero-title">IT'S ABOUT TO GET WESTERN</h1>
+      <div class="hero-desc">
+        Experience the spirit of the American West at our historic family cattle ranch on the southern end of the Teton Mountain Range. <p></p>Beauty, solitude, hospitality, and unforgettable Adventures await.
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="book.html" class="cta-btn">Book Your Stay</a>
+      <a href="adventures.html" class="cta-btn">Explore Adventures</a>
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider" style="margin-bottom: 4em; margin-top: 2em;">
+    <span class="section-divider-icon"></span>
+  </div>
+  
+  <!-- Video and Why Choose Cottonwood Ranch Side-by-Side -->
+  <section style="display: flex; gap: 3em; max-width: 1200px; margin: 4em auto 4em auto; padding: 0 2em; align-items: stretch;">
+    <!-- Video Section -->
+    <div class="video-section" style="flex: 0 0 400px; width: 400px; aspect-ratio: 9/16; display: flex; align-items: stretch;">
+      <div class="video-container" style="position: relative;">
+  <video id="background-video" class="background-video" autoplay muted loop playsinline style="width: 100%; height: 100%; border-radius: 12px; object-fit: contain; cursor: pointer;" onclick="openFullscreen(this);">
+    <source src="images/toe the mark ad.mov" type="video/mp4">
+    <img src="images/closeup.JPG" alt="Ranch Background" style="width:100%;height:100%;object-fit:contain;">
+  </video>
+  <button id="pause-btn" style="position: absolute; top: 10px; left: 10px; z-index: 1000; background: rgba(0, 0, 0, 0.7); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: none;">Pause</button>
+  <button id="exit-btn" style="position: absolute; top: 10px; right: 10px; z-index: 1000; background: rgba(0, 0, 0, 0.7); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: none;">Exit</button>
+</div>
+      <div class="video-overlay"></div>
+    </div>
+    <!-- Why Choose Cottonwood Ranch Box -->
+    <div style="flex: 1; min-width: 400px; display: flex; align-items: stretch;">
+  <div style="background: rgba(245,242,232,0.95); border-radius: 18px; box-shadow: 0 4px 24px rgba(93,78,55,0.20); backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; min-height: 0; width: 100%; box-sizing: border-box; padding: 0;">
+        <h2 style="font-family:'Playfair Display',serif;font-size:2em;font-weight:700;color:var(--warm-brown);margin: 1.5em 0 1em 0;">Why Choose Cottonwood Ranch?</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2em;width:100%;">
+            <div style="padding:1em;">
+              <div style="color:var(--warm-brown);font-size:1.35em;font-weight:800;margin-bottom:1em;font-family:'Playfair Display',serif;text-align:center;">Authentic. Private. Unforgettable. Genuine Wyoming.</div>
+              <div style="color:var(--dark-brown);font-size:1.15em;font-weight:700;line-height:1.6;text-align:center;">
+                Five Generations of Western Tradition and Grit.<br>
+                Hundreds of acres of peaceful Wyoming landscape, all to yourself.<br>
+                Horseback iding, fishing, hiking, and more.<br>
+                Rural hospitality and true solitude.<br>
+                Memories that last a lifetime.<br><br>
+                <a href="book.html" class="cta-btn" style="margin-top:1em;">Reserve Your Spot Today</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Carousel Section -->
+  <section style="max-width:700px;margin:6em auto 3em auto;padding:1em 1em 1em 1em;background:rgba(245,242,232,0.95);border-radius:14px;box-shadow:0 2px 12px rgba(93,78,55,0.12);text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:2.7em;font-weight:900;color:var(--warm-brown);margin-bottom:1em;">Guest Reviews</h2>
+  <div id="review-carousel" style="min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 0.7s cubic-bezier(.25,.82,.45,1);opacity:1;"></div>
+    <div style="margin-top:1em;display:flex;justify-content:center;gap:2em;">
+  <button id="prev-review" style="background:var(--warm-brown);color:var(--cream);border:none;border-radius:50%;width:48px;height:48px;font-size:2em;font-weight:900;cursor:pointer;box-shadow:0 2px 8px rgba(93,78,55,0.18);display:flex;align-items:center;justify-content:center;line-height:1;">&#x25C0;</button>
+  <button id="next-review" style="background:var(--warm-brown);color:var(--cream);border:none;border-radius:50%;width:48px;height:48px;font-size:2em;font-weight:900;cursor:pointer;box-shadow:0 2px 8px rgba(93,78,55,0.18);display:flex;align-items:center;justify-content:center;line-height:1;">&#x25B6;</button>
+    </div>
+  </section>
+  <!-- New Horizontal Reviews Script -->
+    <script>
+    // Simple Reviews Carousel
+    const reviews = [
+      { text: "Truly remarkable area where this cabin is located. I really enjoyed the seclusion from neighboring towns. Beautiful views and solid night of sleep. Cannot wait to come back.", name: "- Gabriel -Utah" },
+      { text: "We had a great time at this secluded, cute cabin. The cabin fit everyone comfortably and could have slept more. The location is so peaceful. All the horses on the property were a highlight. I wish we could have stayed longer", name: "Amy" },
+      { text: "Unplug and relax! We enjoyed a comfortable one night while passing through and even fit in a quick horseback ride.", name: "Kaci -Arkansas" },
+      { text: "The cabin was quiet and comfortable and we had a marvelous time. We hope to come back for a longer trip next time.", name: "Anne -North Carolina" },
+      { text: " we awakened to a gorgeous morning with views of cattle grazing and the remote setting gave us a chance to hear the quiet of this place! Stunning views!", name: "Mark -Nevada" },
+      { text: "The food, the people, the views—everything was perfect.", name: "Matthew -Tennessee" },
+      { text: "My children will not forget this experience!  A class act & a true western experience in which we are very grateful!!", name: "Melissa -Tennessee" },
+      { text: "If you are looking for a ranch stay, this is your ticket! Quiet cabin with awesome views in all directions. Charles the host made sure all our needs were met.", name: "Thomas -Virginia" },
+      { text: "This was an amazing experience! The house is staying far from the town and it is so quiet!...The place is great, especially if you'd like to escape from the city's business and temp of life! and the scenery is breathtaking!", name: "Elena -Israel" },
+      { text: "We loved our stay so much the first time, we decided to come back a second time!... Our children loved feeding the horses and getting in a ride.", name: "Shannon -Japan" }
+    ];
+    let currentReview = 0;
+    function showReview(idx) {
+      const reviewBox = document.getElementById('review-carousel');
+      reviewBox.style.opacity = 0;
+      setTimeout(() => {
+        const review = reviews[idx];
+        reviewBox.innerHTML = `
+          <blockquote style="font-size: 1.35em; color: #2c6c2c; font-style: italic; font-weight:800; margin: 0 0 0.7em 0;">“${review.text}”</blockquote>
+          <div style="text-align: right; font-size: 1.15em; color: #444; font-weight: 700;">${review.name}</div>
+        `;
+        reviewBox.style.opacity = 1;
+      }, 350);
+    }
+    document.getElementById('prev-review').onclick = function() {
+      currentReview = (currentReview - 1 + reviews.length) % reviews.length;
+      showReview(currentReview);
+    };
+    document.getElementById('next-review').onclick = function() {
+      currentReview = (currentReview + 1) % reviews.length;
+      showReview(currentReview);
+    };
+    showReview(currentReview);
+    
+    // Auto-advance functionality
+    let autoAdvanceTimer;
+    let isAutoPlaying = true;
+    
+    function startAutoAdvance() {
+      if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
+      autoAdvanceTimer = setInterval(() => {
+        if (isAutoPlaying) {
+          currentReview = (currentReview + 1) % reviews.length;
+          showReview(currentReview);
+        }
+      }, 5000); // Change review every 5 seconds
+    }
+    
+    function pauseAutoAdvance() {
+      isAutoPlaying = false;
+      setTimeout(() => {
+        isAutoPlaying = true;
+      }, 8000); // Resume auto-advance after 8 seconds
+    }
+    
+    // Add manual control pause functionality
+    const prevBtn = document.getElementById('prev-review');
+    const nextBtn = document.getElementById('next-review');
+    
+    prevBtn.onclick = function() {
+      pauseAutoAdvance();
+      currentReview = (currentReview - 1 + reviews.length) % reviews.length;
+      showReview(currentReview);
+    };
+    
+    nextBtn.onclick = function() {
+      pauseAutoAdvance();
+      currentReview = (currentReview + 1) % reviews.length;
+      showReview(currentReview);
+    };
+    
+    // Start auto-advance
+    startAutoAdvance();
+    </script>
+
+    <!-- New Horizontal Reviews Script -->
+    <script>
+    // Initialize the horizontal reviews system
+    document.addEventListener('DOMContentLoaded', function() {
+      const reviews = [
+        { text: "Truly remarkable area where this cabin is located. I really enjoyed the seclusion from neighboring towns. Beautiful views and solid night of sleep. Cannot wait to come back.", name: "- Gabriel -Utah" },
+        { text: "We had a great time at this secluded, cute cabin. The cabin fit everyone comfortably and could have slept more. The location is so peaceful. All the horses on the property were a highlight. I wish we could have stayed longer", name: "Amy" },
+        { text: "Unplug and relax! We enjoyed a comfortable one night while passing through and even fit in a quick horseback ride.", name: "Kaci -Arkansas" },
+        { text: "We had a wonderful time at the ranch cabin. Charles was amazing. He took my 13-year-old daughter and I on a scenic horseback ride around the ranch, across two rivers and up to a mountain ridge so we could look down onto the beautiful valley below. He also got my daughter and my 9-year-old son all set to do some fishing in a nearby stream. The cabin was quiet and comfortable and we had a marvelous time. We hope to come back for a longer trip next time.", name: "Anne -North Carolina" },
+        { text: "We arrived at Charles' cabin in the dark on motorcycles, after a long day through beautiful Wyoming. So we awakened to a gorgeous morning with views of cattle grazing and the remote setting gave us a chance to hear the quiet of this place! Stunning views! The cabin was warm and has everything you need for rest, making meals and if wanted, a ride on horses! Highly recommend this place!", name: "Mark -Nevada" },
+        { text: "The food, the people, the views—everything was perfect.", name: "Matthew -Tennessee" },
+        { text: "We stayed a night at the ranch on our way back from a western loop for fall break with our family. We arranged to arrive early & Charles was so kind to take us on a horse ride and give fly fishing instruction that afternoon on his property. The reviews of how kind  and accommodating he is were spot on & my children will not forget this experience!  A class act & a true western experience in which we are very grateful!!", name: "Melissa -Tennessee" },
+        { text: "If you are looking for a ranch stay, this is your ticket! Quiet cabin with awesome views in all directions. Charles the host made sure all our needs were met. He was quick to communicate, and is honestly one of the nicest people you will ever meet. Charles lead our group on a horseback ride and we had an incredible time. This was a great stay! Thanks Charles!", name: "Thomas -Virginia" },
+        { text: "This was an amazing experience! The house is staying far from the town and it is so quiet! Charles is the greatest host I've ever met. We did horse riding and kayaking, he answered all our questions and did really take care of us) The place is great, especially if you'd like to escape from the city's business and temp of life! and the scenery is breathtaking!", name: "Elena -Israel" },
+        { text: "We loved our stay so much the first time, we decided to come back a second time! Charles is an outstanding host who goes above and beyond to ensure his guests have a fabulous experience at his ranch. Our children loved feeding the horses and getting in a ride.", name: "Shannon -Japan" }
+      ];
+      
+      let currentReviewIndex = 0;
+      let reviewAutoTimer;
+      let reviewIsAutoPlaying = true;
+      const reviewsTrack = document.getElementById('reviews-track');
+      const dotsContainer = document.getElementById('review-dots');
+      
+      // Create review cards and dots
+      function initializeHorizontalReviews() {
+        if (!reviewsTrack || !dotsContainer) return;
+        
+        // Create review cards
+        reviewsTrack.innerHTML = reviews.map((review, index) => `
+          <div class="review-card" style="
+            min-width: 100%; 
+            padding: 1.5em; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 200px;
+          ">
+            <blockquote style="
+              font-size: 1.1em; 
+              color: var(--dark-brown); 
+              font-style: italic; 
+              margin: 0 0 1em 0; 
+              line-height: 1.5;
+              text-align: center;
+              max-width: 700px;
+              margin: 0 auto 1em auto;
+            ">"${review.text}"</blockquote>
+            <div style="
+              text-align: center; 
+              font-size: 1em; 
+              color: var(--warm-brown); 
+              font-weight: 600;
+            ">${review.name}</div>
+          </div>
+        `).join('');
+        
+        // Create dots
+        dotsContainer.innerHTML = reviews.map((_, index) => `
+          <div class="review-dot" data-index="${index}" style="
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: ${index === 0 ? 'var(--warm-brown)' : 'var(--light-tan)'};
+            cursor: pointer;
+            transition: background 0.3s ease;
+            border: 2px solid var(--warm-brown);
+          "></div>
+        `).join('');
+        
+        // Add dot click handlers
+        document.querySelectorAll('.review-dot').forEach((dot, index) => {
+          dot.addEventListener('click', () => goToHorizontalReview(index));
+        });
+      }
+      
+      function updateHorizontalReviewDisplay() {
+        const translateX = -currentReviewIndex * 100;
+        reviewsTrack.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        document.querySelectorAll('.review-dot').forEach((dot, index) => {
+          dot.style.background = index === currentReviewIndex ? 'var(--warm-brown)' : 'var(--light-tan)';
+        });
+      }
+      
+      function goToHorizontalReview(index) {
+        pauseHorizontalAutoAdvance();
+        currentReviewIndex = index;
+        updateHorizontalReviewDisplay();
+      }
+      
+      function nextHorizontalReview() {
+        currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+        updateHorizontalReviewDisplay();
+      }
+      
+      function prevHorizontalReview() {
+        currentReviewIndex = (currentReviewIndex - 1 + reviews.length) % reviews.length;
+        updateHorizontalReviewDisplay();
+      }
+      
+      function startHorizontalAutoAdvance() {
+        if (reviewAutoTimer) clearInterval(reviewAutoTimer);
+        
+        reviewAutoTimer = setInterval(() => {
+          if (reviewIsAutoPlaying) {
+            nextHorizontalReview();
+          }
+        }, 6000);
+      }
+      
+      function pauseHorizontalAutoAdvance() {
+        reviewIsAutoPlaying = false;
+        setTimeout(() => {
+          reviewIsAutoPlaying = true;
+        }, 8000);
+      }
+      
+      // Event listeners for new review system
+      const prevReviewBtn = document.getElementById('prev-review');
+      const nextReviewBtn = document.getElementById('next-review');
+      
+      if (prevReviewBtn) {
+        prevReviewBtn.addEventListener('click', () => {
+          pauseHorizontalAutoAdvance();
+          prevHorizontalReview();
+        });
+      }
+      
+      if (nextReviewBtn) {
+        nextReviewBtn.addEventListener('click', () => {
+          pauseHorizontalAutoAdvance();
+          nextHorizontalReview();
+        });
+      }
+      
+      // Initialize
+      initializeHorizontalReviews();
+      startHorizontalAutoAdvance();
+    });
+    </script>
+
+    <section style="max-width:700px;margin:4em auto 2em auto;padding:2.5em 1.5em 2em 1.5em;background:var(--deep-forest);border-radius:16px;box-shadow:0 2px 12px rgba(32,92,32,0.13);text-align:center;">
+    <h2 class="cattle-brand" style="color:var(--cream);margin:0;font-size:2.1em;font-weight:900;letter-spacing:0.03em;text-shadow:1px 1px 6px rgba(0,0,0,0.22);">
+      Family Owned<br>
+      <span style="font-size:1.1em;font-weight:400;letter-spacing:0.01em;">For One Hundred And Thirteen Years</span>
+    </h2>
+  </section>
+
+  <section class="photo-row fade-in">
+    <div class="photo-row-container">
+      <img src="images/blackhorse.jpeg" alt="Black Horse" class="photo-row-img" loading="lazy">
+      <img src="images/theboys.jpg" alt="Cabin Group" class="photo-row-img" loading="lazy">
+      <img src="images/sunset.jpeg" alt="Sunset" class="photo-row-img" loading="lazy">
+      <img src="images/tractor.jpg" alt="Tractor" class="photo-row-img tractor-crop" loading="lazy">
+      <img src="images/oldbarn.jpg" alt="Old Barn" class="photo-row-img" loading="lazy">
+      <img src="images/groupcabin.JPG" alt="Group Cabin" class="photo-row-img" loading="lazy">
+      <img src="images/sublett.jpeg" alt="Sublett" class="photo-row-img" loading="lazy">
+      <img src="images/trae.jpeg" alt="Trae" class="photo-row-img" loading="lazy">
+      <img src="images/closeup.JPG" alt="Closeup" class="photo-row-img" loading="lazy">
+      <img src="images/truckdoor.jpg" alt="Truck Door" class="photo-row-img" loading="lazy">
+  <img src="images/TruckLogo.jpeg" alt="Truck Logo" class="photo-row-img" loading="lazy">
+  <img src="images/Grandma Lois Small.jpeg" alt="Grandma Lois" class="photo-row-img" loading="lazy">
+      <img src="images/boyson fence.jpg" alt="Boys on Fence" class="photo-row-img" loading="lazy">
+      <img src="images/oldgreen.jpg" alt="Old Green" class="photo-row-img" loading="lazy">
+      <img src="images/saddle.jpg" alt="Saddle" class="photo-row-img" loading="lazy">
+      <img src="images/sunset.jpeg" alt="Sunset 2" class="photo-row-img" loading="lazy">
+      <!-- Duplicate images for seamless loop -->
+      <img src="images/blackhorse.jpeg" alt="Black Horse" class="photo-row-img" loading="lazy">
+      <img src="images/theboys.jpg" alt="Cabin Group" class="photo-row-img" loading="lazy">
+      <img src="images/sunset.jpeg" alt="Sunset" class="photo-row-img" loading="lazy">
+      <img src="images/tractor.jpg" alt="Tractor" class="photo-row-img tractor-crop" loading="lazy">
+      <img src="images/oldbarn.jpg" alt="Old Barn" class="photo-row-img" loading="lazy">
+      <img src="images/groupcabin.JPG" alt="Group Cabin" class="photo-row-img" loading="lazy">
+      <img src="images/sublett.jpeg" alt="Sublett" class="photo-row-img" loading="lazy">
+      <img src="images/trae.jpeg" alt="Trae" class="photo-row-img" loading="lazy">
+      <img src="images/closeup.JPG" alt="Closeup" class="photo-row-img" loading="lazy">
+      <img src="images/truckdoor.jpg" alt="Truck Door" class="photo-row-img" loading="lazy">
+      <img src="images/TruckLogo.jpeg" alt="Truck Logo" class="photo-row-img" loading="lazy">
+      <img src="images/boyson fence.jpg" alt="Boys on Fence" class="photo-row-img" loading="lazy">
+      <img src="images/oldgreen.jpg" alt="Old Green" class="photo-row-img" loading="lazy">
+      <img src="images/saddle.jpg" alt="Saddle" class="photo-row-img" loading="lazy">
+      <img src="images/sunset.jpeg" alt="Sunset 2" class="photo-row-img" loading="lazy">
+      <img src="images/Painting.jpeg" alt="Painting" class="photo-row-img" loading="lazy">
+    </div>
+  </section>
+  <script>
+    // Pulse the Home nav button twice on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      var bookBtn = document.getElementById('bookNavBtn');
+      if (bookBtn) {
+        bookBtn.classList.add('pulse');
+        setTimeout(function() {
+          bookBtn.classList.remove('pulse');
+        }, 1200);
+      }
+    });
+  </script>
+  <footer class="footer">
+<script>
+  const ranchVideo = document.querySelector('video[src="images/ranchedit2.mov"]');
+  const videoSection = ranchVideo && ranchVideo.closest('section');
+  document.addEventListener('keydown', function(e) {
+    if (document.fullscreenElement === ranchVideo && e.code === 'Space') {
+      e.preventDefault();
+      if (ranchVideo.paused) {
+        ranchVideo.play();
+      } else {
+        ranchVideo.pause();
+      }
+    }
+  });
+  if (ranchVideo) {
+    ranchVideo.addEventListener('fullscreenchange', function() {
+      if (document.fullscreenElement === ranchVideo) {
+        ranchVideo.style.background = '#000';
+        if (videoSection) videoSection.style.background = '#000';
+      } else {
+        ranchVideo.style.background = '';
+        if (videoSection) videoSection.style.background = '';
+      }
+    });
+  }
+</script>
+    &copy; 2025 Cottonwood Ranch &mdash; Cokeville, Wyoming &mdash; All rights reserved.<br>
+    <div style="margin-top:1em;display:flex;gap:2em;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html">📧 Contact Us</a>
+      <a href="book.html">Book Now</a>
+      <span style="color:var(--light-tan);">📍 Cokeville, WY</span>
+    </div>
+  </footer>
+
+  <!-- Floating Book Now Button -->
+  <a href="book.html" class="floating-book-btn">Book Now</a>
+  
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="background:var(--warm-brown);color:var(--cream);border:none;border-radius:50%;width:48px;height:48px;font-size:2em;font-weight:900;box-shadow:0 2px 8px rgba(93,78,55,0.18);display:flex;align-items:center;justify-content:center;line-height:1;">&#x25B2;</button>
+
+  <!-- Scroll behavior script -->
+  <script>
+    // Show/hide scroll to top button
+    window.addEventListener('scroll', function() {
+      const scrollTop = document.querySelector('.scroll-top');
+      if (window.pageYOffset > 300) {
+        scrollTop.classList.add('visible');
+      } else {
+        scrollTop.classList.remove('visible');
+      }
+    });
+    
+    // Add smooth scrolling to all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+  <!-- JavaScript to handle the visibility of the Book Now button -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const bookNowButton = document.querySelector('.floating-book-btn');
+
+      function handleScroll() {
+        const scrollPosition = window.scrollY;
+  const triggerPosition = document.body.scrollHeight * 0.5;
+
+        if (scrollPosition > triggerPosition) {
+          bookNowButton.classList.add('visible');
+        } else {
+          bookNowButton.classList.remove('visible');
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll);
+    });
+  </script>
+
+  <script>
+  const video = document.getElementById('background-video');
+  const pauseBtn = document.getElementById('pause-btn');
+  const exitBtn = document.getElementById('exit-btn');
+
+  function openFullscreen(videoElement) {
+    videoElement.pause();
+    videoElement.currentTime = 0;
+    videoElement.requestFullscreen();
+    videoElement.play();
+    pauseBtn.style.display = 'block';
+    exitBtn.style.display = 'block';
+  }
+
+  pauseBtn.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      pauseBtn.textContent = 'Pause';
+    } else {
+      video.pause();
+      pauseBtn.textContent = 'Play';
+    }
+  });
+
+  exitBtn.addEventListener('click', () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      pauseBtn.style.display = 'none';
+      exitBtn.style.display = 'none';
+    }
+  });
+</script>
 </body>
 </html>
