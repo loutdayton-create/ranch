@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Gallery - Cottonwood Ranch</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Lato:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="responsive.css">
 		<style>
     :root {
       --sage-green: #8fa68e;
@@ -79,7 +80,6 @@
 	  z-index: 10002;
 	  letter-spacing: -0.1em;
   }
-    }
     .lightbox-btn:hover, .lightbox-btn:focus {
 	background: #8b6f47;
 	color: #fff;
@@ -194,16 +194,25 @@
 				font-size: 0.95em;
 			}
 		}
+		.gallery img {
+    width: 300px; /* Set a consistent width */
+    height: 200px; /* Set a consistent height */
+    object-fit: cover; /* Ensure images are cropped to fit */
+    margin: 10px; /* Add spacing between images */
+}
 	</style>
+	<!-- Include Lightbox CSS and JS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </head>
 <body>
 	<nav class="navbar">
-  <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
+	<button onclick="location.href='index.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
     <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo">
     <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
   </button>
   <div class="nav-btn-group">
-      <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
+	<a href="index.html" class="nav-btn" id="homeNavBtn">Home</a>
       <a href="heritage.html" class="nav-btn">Heritage</a>
       <a href="adventures.html" class="nav-btn">Adventures</a>
       <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
@@ -368,8 +377,14 @@
 				<div class="video-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:2em;">
 					<!-- Example videos, replace or add more as needed -->
 					<div class="video-item" style="display:flex;flex-direction:column;align-items:center;">
-						<video src="images/0716.mov" controls style="width:100%;max-width:380px;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;"></video>
-						<div class="video-caption" style="margin-top:0.5em;font-size:1.05em;color:#205c20;font-family:'Montserrat',Arial,sans-serif;text-align:center;">Glimpes 1</div>
+							<iframe 
+								src="https://www.youtube.com/embed/dYqoVHn5D9s?autoplay=1&mute=1&loop=1&playlist=dYqoVHn5D9s" 
+								title="Glimpes 1 Video" 
+								allow="autoplay; encrypted-media" 
+								allowfullscreen 
+								style="width:100%;max-width:380px;height:220px;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;border:none;object-fit:contain;">
+							</iframe>
+							<div class="video-caption" style="margin-top:0.5em;font-size:1.05em;color:#205c20;font-family:'Montserrat',Arial,sans-serif;text-align:center;">Glimpes 1</div>
 					</div>
 					<div class="video-item" style="display:flex;flex-direction:column;align-items:center;">
 						<video src="images/RANCHAD.mov" controls style="width:100%;max-width:380px;border-radius:12px;box-shadow:0 2px 12px rgba(32,92,32,0.13);background:#fff;"></video>
