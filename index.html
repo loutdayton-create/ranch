@@ -1,998 +1,686 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="responsive.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cottonwood Ranch</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-  /* Western Color Palette */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --sage-green: #8fa68e;
-      --warm-brown: #8b6f47;
-      --cream: #f5f2e8;
-      --rust-orange: #d4926c;
-      --dark-brown: #6b5b47;
-      --light-tan: #d2b48c;
-      --deep-forest: #3a5a37;
+      --cream:       #f7f2ea;
+      --tan:         #d9c9a8;
+      --sand:        #c4a97d;
+      --terra:       #c47a50;
+      --denim:       #7a8fa6;
+      --brown:       #6b4f35;
+      --dark:        #3a2a1a;
+      --text:        #4a3728;
     }
-    
-    @keyframes navPulse {
-  0% { background: var(--cream); color: var(--warm-brown); box-shadow: 0 0 0 0 var(--cream); }
-  20% { background: var(--cream); color: var(--warm-brown); box-shadow: 0 0 8px 2px var(--light-tan); }
-  40% { background: var(--light-tan); color: var(--warm-brown); box-shadow: 0 0 16px 4px var(--light-tan); }
-  60% { background: var(--cream); color: var(--warm-brown); box-shadow: 0 0 8px 2px var(--light-tan); }
-  80% { background: var(--light-tan); color: var(--warm-brown); box-shadow: 0 0 16px 4px var(--light-tan); }
-  100% { background: var(--cream); color: var(--warm-brown); box-shadow: 0 0 0 0 var(--cream); }
-    }
-      .nav-btn.pulse {
-  animation: navPulse 1.2s ease-in-out 1;
-    }
-      /* Enhanced Fade-in animation for sections */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 1.2s cubic-bezier(.25,.82,.45,1) forwards;
-      }
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: none;
-        }
-      }
-      
-      /* Enhanced Button hover effects */
-      .cta-btn:hover, .nav-btn:hover {
-        transform: scale(1.08);
-        box-shadow: 0 6px 20px rgba(139,111,71,0.25);
-        transition: all 0.3s cubic-bezier(.25,.82,.45,1);
-      }
-      
-      /* Hover animation for sections */
-      .section:hover {
-        transform: translateY(-2px);
-        transition: transform 0.3s ease;
-      }
-      
-      /* Interactive card hover */
-      .card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(93,78,55,0.15);
-        transition: all 0.3s cubic-bezier(.25,.82,.45,1);
-      }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Lato', Arial, sans-serif;
-      background: #f7f9fc;
-      color: #222;
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* Western Typography */
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      color: #3a5a37;
-      margin-bottom: 0.5em;
-    }
-    
-    h1 {
-      font-size: 2.5em;
-      margin-top: 1em;
-    }
-    
-    h2 {
-      font-size: 2em;
-    }
-    
-    h3 {
-      font-size: 1.5em;
-    }
-    
-    .cattle-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5em;
-      font-weight: 900;
-      color: var(--warm-brown);
-      text-shadow: 1px 1px 2px rgba(93,78,55,0.3);
-      letter-spacing: 0.1em;
-    }
-    /* Floating Book Now Button */
-    .floating-book-btn {
-      position: fixed;
-      bottom: 2em;
-      right: 2em;
-      z-index: 1000;
-      background: var(--warm-brown);
-      color: var(--cream);
-      padding: 0.8em 1.5em;
-      border-radius: 50px;
-      box-shadow: 0 4px 20px rgba(139,111,71,0.3);
-      text-decoration: none;
-      font-weight: 700;
-      font-family: 'Playfair Display', serif;
-      transition: all 0.3s ease;
-      animation: floating 3s ease-in-out infinite;
-    }
-    .floating-book-btn:hover {
-      background: var(--dark-brown);
-      transform: scale(1.1);
-      box-shadow: 0 6px 25px rgba(139,111,71,0.4);
-    }
-    @keyframes floating {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    /* Scroll to Top Button */
-    .scroll-top {
-      position: fixed;
-      bottom: 2em;
-      left: 2em;
-      z-index: 999;
-      background: rgba(139,111,71,0.8);
-      color: var(--cream);
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      font-size: 1.5em;
-      cursor: pointer;
-      opacity: 0;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 10px rgba(139,111,71,0.3);
-    }
-    .scroll-top.visible {
-      opacity: 1;
-    }
-    .scroll-top:hover {
-      background: var(--warm-brown);
-      transform: scale(1.1);
-    }
-    /* Section Dividers */
-    .section-divider {
-      text-align: center;
-      margin: 3em 0;
-      position: relative;
-    }
-    .section-divider::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--sage-green), transparent);
-    }
-    .section-divider-icon {
       background: var(--cream);
-      padding: 0 2em;
-      font-size: 2em;
-      color: var(--sage-green);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
     }
-    .navbar {
-      position: sticky;
-      top: 0;
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      width: 100%;
-      box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(135deg, #4a6a47, #3a5a37);
-      height: 110px;
-      padding: 0 2em;
-      box-shadow: 0 2px 8px rgba(139,111,71,0.08);
-      margin: 0;
-      border-radius: 0;
+      padding: 1.4rem 4rem;
+      background: rgba(247, 242, 234, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--tan);
     }
-    .nav-logo {
-      height: 80px;
-      width: auto;
-      margin-right: 2em;
-    }
-    .nav-btn-group {
+
+    .header-left {
       display: flex;
-      gap: 1.0em;
+      align-items: center;
+      gap: 1.6rem;
     }
-    .nav-btn {
-      width: 120px;
-      height: 48px;
-      background: var(--cream);
-      color: var(--warm-brown);
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.05em;
-      border: none;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(27,28,60,0.07);
-      cursor: pointer;
-      transition: box-shadow 0.2s, background 0.2s, color 0.2s;
-      letter-spacing: 0.03em;
-      outline: none;
+
+    .brand-img {
+      display: block;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--tan), var(--sand));
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .brand-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-img .brand-placeholder {
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown);
+      opacity: 0.6;
+    }
+
+    .header-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--brown);
+      letter-spacing: 0.04em;
       text-decoration: none;
     }
-    .nav-btn:hover, .nav-btn:focus {
-      background: linear-gradient(135deg, #4a6a47, #3a5a37);
-      color: white;
-      border: 2px solid white;
-      box-shadow: 0 2px 8px rgba(93,78,55,0.13);
+
+    nav {
+      display: flex;
+      gap: 3.5rem;
+      align-items: center;
     }
+
+    nav a {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--terra); }
+
+    .nav-cta {
+      background: var(--terra);
+      color: #fff !important;
+      padding: 0.7rem 1.8rem;
+      border-radius: 2px;
+      letter-spacing: 0.12em;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--brown) !important; }
+
+    /* ── HERO ── */
     .hero {
-      background: url('images/closeup.JPG') center/cover no-repeat;
-      min-height: 75vh;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 70px;
+    }
+
+    .hero-image {
+      position: relative;
+      background: var(--tan);
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 4em 1em 2em 1em;
-      text-align: center;
-      position: relative;
-      background-attachment: fixed;
+      gap: 0.75rem;
+      background: linear-gradient(160deg, #d9c9a8 0%, #c4a97d 100%);
     }
-    .hero::before {
+
+    .placeholder-icon {
+      width: 64px;
+      height: 64px;
+      opacity: 0.35;
+    }
+
+    .placeholder-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown);
+      opacity: 0.6;
+      font-weight: 600;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 5rem 5rem 4rem;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .hero-content::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(93,78,55,0.3), rgba(139,111,71,0.2));
-      pointer-events: none;
+      top: 3rem; bottom: 3rem; left: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--tan), transparent);
     }
-    .hero-cta {
-      display: flex;
-      gap: 1em;
-      justify-content: center;
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--denim);
+      margin-bottom: 1.2rem;
+      font-weight: 600;
     }
-    .video-section {
-      background: var(--cream);
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 9 / 16;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .background-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 1.0;
-    }
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(32,92,32,0.2), rgba(255,255,255,0.1));
-      pointer-events: none;
-    }
-    .hero-title {
+
+    h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.5em;
-      font-weight: 900;
-      color: var(--warm-brown);
-      margin-bottom: 0.3em;
-      letter-spacing: 0.02em;
-      text-shadow: 2px 2px 4px rgba(93,78,55,0.1);
+      font-size: clamp(2.8rem, 4vw, 4rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
     }
-    .hero-textbox {
-      background: rgba(245,242,232,0.95);
-      border: 3px solid var(--warm-brown);
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(93,78,55,0.2);
-      padding: 2em 2.5em;
-      display: inline-block;
-      max-width: 700px;
-      margin-bottom: 2em;
-      position: relative;
-      z-index: 2;
+
+    .tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--terra);
+      margin-bottom: 2rem;
     }
+
     .hero-desc {
-      font-size: 1.5em;
-      color: var(--dark-brown);
-      max-width: 700px;
-      margin-bottom: 2em;
-      line-height: 1.6;
-      font-family: 'Crimson Text', serif;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--text);
+      max-width: 38ch;
+      margin-bottom: 2.8rem;
+      font-weight: 400;
     }
-    .cta-btn {
+
+    .btn {
       display: inline-block;
-      padding: 0.9em 2em;
-      background-color: #3a5a37;
-      color: #fff;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15em;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(32,92,32,0.10);
+      padding: 0.85rem 2.2rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.22s ease;
       cursor: pointer;
-      margin: 2em auto 0 auto;
-      transition: background 0.2s;
-      text-decoration: none;
     }
-    .cta-btn:hover {
-      background-color: #4a6a47;
-    }
-    .section {
-      max-width: 1200px;
-      margin: 0 auto 3.5em auto;
-      padding: 3em 2em 3em 2em;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(32,92,32,0.09);
-    }
-    .section:nth-child(even) {
-      background: rgba(143,166,142,0.13);
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(93,78,55,0.10);
-    }
-    .section:nth-child(odd) {
-      background: rgba(210,180,140,0.10);
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(139,111,71,0.10);
-    }
-    .hero {
-      min-height: 75vh;
-      padding: 6em 2em 4em 2em;
-      margin-bottom: 3.5em;
-    }
-    .photo-row {
-      margin: 0 auto 3.5em auto;
-      padding: 2em 0 2em 0;
-    }
-    .section-divider {
-      margin: 5em 0 5em 0;
-    }
-    @media (max-width: 900px) {
-      .section, .hero, .photo-row {
-        padding-left: 0.5em !important;
-        padding-right: 0.5em !important;
-      }
-      .section {
-        padding-top: 2em;
-        padding-bottom: 2em;
-      }
-      .hero {
-        padding-top: 3em;
-        padding-bottom: 2em;
-      }
-      .photo-row {
-        padding-top: 1em;
-        padding-bottom: 1em;
-      }
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2em;
-      font-weight: 700;
-      color: var(--warm-brown);
-      margin-bottom: 1em;
-      letter-spacing: 0.02em;
-      text-align: center;
-    }
-    .offerings {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2em;
-      justify-content: center;
-      margin-top: 2em;
-    }
-    .offering {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(27,28,60,0.07);
-      padding: 2em 1.5em;
-      max-width: 320px;
-      flex: 1 1 280px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .offering-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25em;
-      font-weight: 700;
-      color: var(--warm-brown);
-      margin-bottom: 0.5em;
-    }
-    .offering-desc {
-      font-size: 1em;
-      color: var(--dark-brown);
-      margin-bottom: 1em;
-      line-height: 1.5;
-    }
-    .footer {
-      background: #3a5a37;
+
+    .btn-primary {
+      background: var(--terra);
       color: #fff;
-      text-align: center;
-      padding: 2em 1em;
-      font-size: 1em;
-      letter-spacing: 0.02em;
-      margin-top: 3em;
-      border-radius: 0 0 12px 12px;
+      border: 2px solid var(--terra);
     }
-    .footer a {
-      color: var(--light-tan);
-      text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
+
+    .btn-primary:hover {
+      background: var(--brown);
+      border-color: var(--brown);
     }
-    .footer a:hover {
-      color: var(--cream);
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+
+    .btn-outline {
+      background: transparent;
+      color: var(--brown);
+      border: 2px solid var(--tan);
+      margin-left: 1rem;
     }
-    .photo-row {
+
+    .btn-outline:hover {
+      border-color: var(--brown);
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--brown);
+      color: var(--tan);
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      padding: 1.4rem 2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .strip span { opacity: 0.85; }
+    .strip strong { color: var(--cream); font-weight: 700; }
+
+    /* ── ABOUT ── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 7rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 4rem;
+      padding-right: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text);
+      max-width: 44ch;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2rem;
+      border-top: 2px solid var(--tan);
+      padding-top: 1.8rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .stat span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--sand);
+      letter-spacing: 0.04em;
+    }
+
+    .about-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.75rem;
+      padding-left: 4rem;
+    }
+
+    .img-box {
+      background: var(--tan);
+      border-radius: 3px;
       overflow: hidden;
-      width: 100%;
-      max-width: 1200px;
-  margin: 1em auto 0 auto;
-      padding: 0 1em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .photo-row-container {
-      display: flex;
-      gap: 2em;
-      align-items: center;
-      animation: photo-scroll 60s linear infinite;
-      will-change: transform;
-    }
-    @keyframes photo-scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-    .photo-row-img {
-      width: 340px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(93,78,55,0.13);
-      border: 2px solid var(--light-tan);
-      background: var(--cream);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .photo-row-img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 4px 18px rgba(139,111,71,0.22);
-    }
-    .tractor-crop {
-      object-position: 50% 80%;
-    }
-    @media (max-width: 900px) {
-      .offerings {
-        flex-direction: column;
-        gap: 1.5em;
-        align-items: center;
-      }
-      .navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 1em;
-      }
-      .nav-logo {
-        margin-bottom: 1em;
-      }
-      .video-text-row {
-        flex-direction: column;
-        gap: 1em;
-      }
-      .section {
-        padding: 1em 0.5em;
-      }
-    }
-    @media (max-width: 600px) {
-      .hero-title {
-        font-size: 2em;
-      }
-      .section-title {
-        font-size: 1.3em;
-      }
-      .offering {
-        padding: 1.2em 0.7em;
-      }
-      .nav-btn {
-        width: 100px;
-        font-size: 0.95em;
-      }
-      .hero-cta {
-        flex-direction: column;
-        align-items: center;
-      }
-      .cta-btn {
-        width: 200px;
-        text-align: center;
-      }
-      .photo-row-img {
-        width: 280px;
-        height: 180px;
-      }
-      .floating-book-btn {
-        bottom: 1em;
-        right: 1em;
-        font-size: 0.9em;
-        padding: 0.7em 1.2em;
-      }
-      .scroll-top {
-        bottom: 1em;
-        left: 1em;
-        width: 45px;
-        height: 45px;
-        font-size: 1.3em;
-      }
-    }
-    .offering-btn {
-      text-decoration: none;
-      cursor: pointer;
-      transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
-      border: none;
-      outline: none;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
-    .offering-btn:hover, .offering-btn:focus {
-      background: var(--light-tan);
-      box-shadow: 0 4px 18px rgba(139,111,71,0.22);
-      transform: translateY(-2px) scale(1.03);
-    }
-    
-    /* Add fade-in animation for the Book Now button */
-    .floating-book-btn {
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-    .floating-book-btn.visible {
-      opacity: 1;
-    }
-    .video-text-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2em;
-    margin: 2em 0;
-  }
-  .video-text-row video {
-    max-width: 480px;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-  }
-  .video-text-row .video-description {
-    max-width: 400px;
-    font-size: 1.15em;
-    color: #333;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    min-height: 100%;
-    /* Vertically center text with video */
-    padding-top: 0;
-    padding-bottom: 0;
-  }
 
-  /* Add hover effect for the logo */
-.logo {
-    transition: transform 0.3s ease; /* Smooth transition */
-}
+    .img-box.horizontal {
+      grid-column: span 2;
+      height: 220px;
+    }
 
-.logo:hover {
-    transform: scale(1.1); /* Slightly enlarge the logo */
-}
+    .img-box.vertical {
+      height: 300px;
+    }
+
+    /* ── PHOTO BREAK ── */
+    .photo-break {
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+    }
+
+    .photo-break-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #c4a97d 0%, #8a6a45 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── STAY ── */
+    .stay {
+      background: linear-gradient(to bottom, #ede6d6, var(--cream));
+      padding: 6rem 4rem;
+    }
+
+    .stay-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stay-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--denim);
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .stay h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .stay-intro {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+      max-width: 52ch;
+      font-weight: 400;
+    }
+
+    .stay-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .stay-photo {
+      width: 100%;
+      height: 480px;
+      background: linear-gradient(150deg, var(--tan), var(--sand));
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stay-details p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    .cabin-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
+      border-top: 2px solid var(--tan);
+      border-bottom: 2px solid var(--tan);
+      padding: 1.5rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .cabin-fact strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .cabin-fact span {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--sand);
+    }
+
+    /* ── VIDEO ── */
+    .video-section {
+      background: var(--dark);
+      padding: 6rem 4rem;
+    }
+
+    .video-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .video-text .section-label {
+      color: var(--sand);
+    }
+
+    .video-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .video-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--tan);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+      aspect-ratio: 9 / 16;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: var(--sand);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+
+    footer a { color: var(--sand); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.22s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.34s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.46s; }
+    .hero-content > *:nth-child(5) { animation-delay: 0.58s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { min-height: 280px; }
+      .hero-content { padding: 3rem 2rem; }
+      .hero-content::before { display: none; }
+      .about { grid-template-columns: 1fr; padding: 4rem 2rem; }
+      .about-images { padding-left: 0; margin-top: 2.5rem; }
+      .stay { padding: 4rem 2rem; }
+      .stay-body { grid-template-columns: 1fr; }
+      .stay-photo { height: 280px; }
+      .photo-break { height: 240px; }
+      .video-section { padding: 4rem 2rem; }
+      .video-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      header { padding: 1rem 1.5rem; }
+      nav { gap: 1.2rem; }
+      .strip { gap: 1.5rem; flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body>
-  <div class="site-notice" style="width:100%;background:#d4926c;color:#fff;text-align:center;font-family:'Playfair Display',serif;font-size:1.1em;font-weight:700;padding:0.7em 0.5em;letter-spacing:0.03em;box-shadow:0 2px 8px rgba(139,111,71,0.10);z-index:2000;position:relative;top:0;">This website is still a work in progress. Thanks for your patience!</div>
-  <nav class="navbar">
-  <button onclick="location.href='home.html'" style="background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;gap:1em;">
-    <img src="images/circle logo.png" alt="Ranch Logo" class="nav-logo logo">
-    <span class="nav-title" style="color: #ffffff; font-family: 'Playfair Display', serif; font-size: 2.2em; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); letter-spacing: 0.08em; white-space: nowrap;">COTTONWOOD RANCH</span>
-  </button>
-  <div class="nav-btn-group">
-      <a href="home.html" class="nav-btn" id="homeNavBtn">Home</a>
-      <a href="heritage.html" class="nav-btn">Heritage</a>
-      <a href="adventures.html" class="nav-btn">Adventures</a>
-  <a href="gallery.html" class="nav-btn">Gallery</a>
-  <a href="book.html" class="nav-btn" id="bookNavBtn">Book Now</a>
-      <a href="contact.html" class="nav-btn">Contact</a>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="brand-img">
+        <img src="Images/logo.png" alt="Cottonwood Ranch" />
+      </a>
+      <a href="index.html" class="header-logo">Cottonwood Ranch</a>
     </div>
-  </nav>
-  <section class="hero fade-in">
-    <div class="hero-textbox">
-      <h1 class="hero-title">IT'S ABOUT TO GET<p>-WESTERN-</p></h1>
-      <div class="hero-desc">
-        Experience the spirit of the American West at our historic family cattle ranch on the southern end of the Teton Mountain Range. <p></p>Beauty, solitude, hospitality, and unforgettable Adventures await.
+    <nav>
+      <a href="about.html">Our Ranch</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="booking.html" class="nav-cta">Book a Stay</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-image">
+      <img src="Images/closeup.jpg" alt="Rancher on horseback in the Wyoming snow" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+    </div>
+    <div class="hero-content">
+      <h1>Cottonwood<br/>Ranch</h1>
+      <p class="tagline">The West is Still Wild.</p>
+      <p class="hero-desc">A real working cattle and horse ranch where guests are welcome to slow down, breathe wide-open air, and experience Wyoming the way it's always been.</p>
+      <div>
+        <a href="#book" class="btn btn-primary">Plan Your Stay</a>
+        <a href="#about" class="btn btn-outline">Learn More</a>
       </div>
-    </div>
-    <div class="hero-cta">
-      <a href="book.html" class="cta-btn">Book Your Stay</a>
-      <a href="adventures.html" class="cta-btn">Explore Adventures</a>
     </div>
   </section>
 
-  <div class="section-divider" style="margin-bottom: 4em; margin-top: 2em;">
-    <span class="section-divider-icon"></span>
+  <!-- QUICK FACTS STRIP -->
+  <div class="strip">
+    <div><span>Working </span><strong>Cattle Ranch</strong></div>
+    <div><span>Horses </span><strong>on the Property</strong></div>
+    <div><span>Private </span><strong>Cabin Lodging</strong></div>
+    <div><strong>Wyoming</strong><span>, USA</span></div>
   </div>
-  
-  <section style="display: flex; gap: 3em; max-width: 1200px; margin: 4em auto 4em auto; padding: 0 2em; align-items: stretch;">
-    <div class="video-section" style="flex: 0 0 400px; width: 400px; aspect-ratio: 9/16; display: flex; align-items: stretch;">
-      <div class="video-container" style="position: relative; width: 100%; height: 100%;">
-        <iframe 
-          src="https://www.youtube.com/embed/GePAga1u4yk?autoplay=1&mute=1&loop=1&playlist=GePAga1u4yk" 
-          title="Cottonwood Ranch Video" 
-          allow="autoplay; encrypted-media" 
-          allowfullscreen 
-          style="width: 100%; height: 100%; border-radius: 12px; border: none; object-fit: contain;">
-        </iframe>
-        <div class="video-overlay"></div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <h2>Land that's been<br/>worked &amp; earned.</h2>
+      <p>The Dayton family has run cattle on this Wyoming ground for generations. This isn't a resort dressed up to look like a ranch — it's the real thing. Livestock to tend, horses to ride, fences that stretch as far as you can see.</p>
+      <a href="about.html" class="btn btn-primary" style="margin-top:1.5rem;display:inline-block;">Our Story</a>
+    </div>
+    <div class="about-images">
+      <div class="img-box horizontal">
+        <img src="Images/barn.jpg" alt="The ranch barn" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+      <div class="img-box vertical">
+        <img src="Images/Brumbie.jpeg" alt="Horse on the ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+      <div class="img-box vertical">
+        <img src="Images/calf.jpg" alt="Calf on the ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
       </div>
     </div>
-    <div style="flex: 1; min-width: 400px; display: flex; align-items: stretch;">
-  <div style="background: rgba(245,242,232,0.95); border-radius: 18px; box-shadow: 0 4px 24px rgba(93,78,55,0.20); backdrop-filter: blur(10px); display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; min-height: 0; width: 100%; box-sizing: border-box; padding: 0;">
-        <h2 style="font-family:'Playfair Display',serif;font-size:2em;font-weight:700;color:var(--warm-brown);margin: 1.5em 0 1em 0;">Why Choose Cottonwood Ranch?</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2em;width:100%;">
-            <div style="padding:1em; display: flex; flex-direction: column; align-items: center;">
-              <div style="color:var(--warm-brown);font-size:1.35em;font-weight:800;margin-bottom:1em;font-family:'Playfair Display',serif;text-align:center;">Authentic. Private. Unforgettable.</div>
-              <div style="color:var(--dark-brown);font-size:1.08em;font-weight:700;line-height:1.5;text-align:center;max-width:340px;margin-bottom:1em;">
-                Five generations of western tradition.<br>
-                Wide open Wyoming landscape.<br>
-                Real hospitality, real adventure.<br>
-              </div>
-              <div style="margin: 1.5em 0 1em 0; display: flex; flex-direction: column; align-items: center;">
-                <span style="font-size:2.3em; color:#FFD700; letter-spacing: 0.08em; text-shadow: 0 2px 8px rgba(0,0,0,0.18); font-weight:900;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                <span style="font-size:2em; color:var(--warm-brown); font-weight:900; margin-top:0.2em; text-shadow: 0 1px 4px rgba(139,111,71,0.18);">4.9<span style="font-size:0.7em; color:#888; font-weight:700;">/5</span></span>
-                <span style="font-size:1.15em; color:#888; font-weight:700; margin-top:0.1em; letter-spacing:0.03em;">on Airbnb</span>
-              </div>
-              <a href="https://www.airbnb.com/rooms/3176611?search_mode=regular_search&adults=1&check_in=2026-04-19&check_out=2026-04-24&children=0&infants=0&pets=0&source_impression_id=p3_1771873982_P3XPekfQ4UBuKxAV&previous_page_section_name=1000&federated_search_id=9077dc07-5e67-46b9-a765-a4279a938a3f" target="_blank" rel="noopener" class="cta-btn" style="margin-top:0.5em;background:#FF5A5F;">See on Airbnb</a>
+  </section>
+
+  <!-- FULL BLEED PHOTO BREAK -->
+  <div class="photo-break">
+    <img src="Images/southside.png" alt="Cottonwood Ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
+  </div>
+
+  <!-- STAY -->
+  <section class="stay" id="stay">
+    <div class="stay-inner">
+      <div class="stay-header">
+        <p class="section-label">Where You'll Sleep</p>
+        <h2>The Cabin</h2>
+        <p class="stay-intro">A fully furnished private cabin right on the ranch. Beds, heat, and everything you need to rest up after a day outdoors.</p>
+      </div>
+      <div class="stay-body">
+        <div class="stay-photo">
+          <img src="Images/cabin.jpeg" alt="The Cottonwood Ranch cabin" style="width:100%;height:50%;object-fit:cover;display:block;" />
+          <img src="Images/masterbed.jpeg" alt="Cabin master bedroom" style="width:100%;height:50%;object-fit:cover;display:block;" />
+        </div>
+        <div class="stay-details">
+          <p>Set back on the property with views of the range, the cabin is simple, solid, and comfortable. You're here to experience the ranch — the cabin makes sure you're rested enough to do it.</p>
+          <div class="cabin-facts">
+            <div class="cabin-fact">
+              <strong>Sleeps</strong>
+              <span>Up to 12</span>
             </div>
+            <div class="cabin-fact">
+              <strong>Bathrooms</strong>
+              <span>1 Full Bath</span>
+            </div>
+            <div class="cabin-fact">
+              <strong>Private Bedroom</strong>
+              <span>1 Room</span>
+            </div>
+            <div class="cabin-fact">
+              <strong>Additional Rooms</strong>
+              <span>Bunk Room &amp; Large Bed Room</span>
+            </div>
+          </div>
+          <a href="booking.html" class="btn btn-primary">Check Availability</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section style="max-width:700px;margin:6em auto 3em auto;padding:1em 1em 1em 1em;background:rgba(245,242,232,0.95);border-radius:14px;box-shadow:0 2px 12px rgba(93,78,55,0.12);text-align:center;">
-  <h2 style="font-family:'Playfair Display',serif;font-size:2.7em;font-weight:900;color:var(--warm-brown);margin-bottom:1em;">Guest Reviews</h2>
-  <div id="review-carousel" style="min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 0.7s cubic-bezier(.25,.82,.45,1);opacity:1;"></div>
-    <div style="margin-top:1em;display:flex;justify-content:center;gap:2em;">
-  <button id="prev-review" style="background:var(--warm-brown);color:var(--cream);border:none;border-radius:50%;width:48px;height:48px;font-size:2em;font-weight:900;cursor:pointer;box-shadow:0 2px 8px rgba(93,78,55,0.18);display:flex;align-items:center;justify-content:center;line-height:1;">&#x25C0;</button>
-  <button id="next-review" style="background:var(--warm-brown);color:var(--cream);border:none;border-radius:50%;width:48px;height:48px;font-size:2em;font-weight:900;cursor:pointer;box-shadow:0 2px 8px rgba(93,78,55,0.18);display:flex;align-items:center;justify-content:center;line-height:1;">&#x25B6;</button>
+  <!-- VIDEO -->
+  <section class="video-section" id="book">
+    <div class="video-inner">
+      <div class="video-text">
+        <p class="section-label">Cottonwood Ranch</p>
+        <h2>See It for Yourself</h2>
+        <p>A working ranch is best understood when you can see it. Take a look at life on Cottonwood Ranch straight from our YouTube.</p>
+        <a href="booking.html" class="btn btn-primary">Book a Stay</a>
+      </div>
+      <div class="video-frame">
+        <!-- Replace YOUR_VIDEO_ID with the YouTube video ID when ready -->
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=YOUR_VIDEO_ID&controls=1"
+          title="Cottonwood Ranch"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
   </section>
-  <script>
-    // Simple Reviews Carousel
-    const reviews = [
-      { text: "Truly remarkable area where this cabin is located. I really enjoyed the seclusion from neighboring towns. Beautiful views and solid night of sleep. Cannot wait to come back.", name: "- Gabriel -Utah" },
-      { text: "We had a great time at this secluded, cute cabin. The cabin fit everyone comfortably and could have slept more. The location is so peaceful. All the horses on the property were a highlight. I wish we could have stayed longer", name: "Amy" },
-      { text: "Unplug and relax! We enjoyed a comfortable one night while passing through and even fit in a quick horseback ride.", name: "Kaci -Arkansas" },
-      { text: "The cabin was quiet and comfortable and we had a marvelous time. We hope to come back for a longer trip next time.", name: "Anne -North Carolina" },
-      { text: " we awakened to a gorgeous morning with views of cattle grazing and the remote setting gave us a chance to hear the quiet of this place! Stunning views!", name: "Mark -Nevada" },
-      { text: "The food, the people, the views—everything was perfect.", name: "Matthew -Tennessee" },
-      { text: "My children will not forget this experience!  A class act & a true western experience in which we are very grateful!!", name: "Melissa -Tennessee" },
-      { text: "If you are looking for a ranch stay, this is your ticket! Quiet cabin with awesome views in all directions. Charles the host made sure all our needs were met.", name: "Thomas -Virginia" },
-      { text: "This was an amazing experience! The house is staying far from the town and it is so quiet!...The place is great, especially if you'd like to escape from the city's business and temp of life! and the scenery is breathtaking!", name: "Elena -Israel" },
-      { text: "We loved our stay so much the first time, we decided to come back a second time!... Our children loved feeding the horses and getting in a ride.", name: "Shannon -Japan" }
-    ];
-    let currentReview = 0;
-    function showReview(idx) {
-      const reviewBox = document.getElementById('review-carousel');
-      reviewBox.style.opacity = 0;
-      setTimeout(() => {
-        const review = reviews[idx];
-        reviewBox.innerHTML = `
-          <blockquote style="font-size: 1.35em; color: #2c6c2c; font-style: italic; font-weight:800; margin: 0 0 0.7em 0;">“${review.text}”</blockquote>
-          <div style="text-align: right; font-size: 1.15em; color: #444; font-weight: 700;">${review.name}</div>
-        `;
-        reviewBox.style.opacity = 1;
-      }, 350);
-    }
-    document.getElementById('prev-review').onclick = function() {
-      currentReview = (currentReview - 1 + reviews.length) % reviews.length;
-      showReview(currentReview);
-    };
-    document.getElementById('next-review').onclick = function() {
-      currentReview = (currentReview + 1) % reviews.length;
-      showReview(currentReview);
-    };
-    showReview(currentReview);
-    
-    // Auto-advance functionality
-    let autoAdvanceTimer;
-    let isAutoPlaying = true;
-    
-    function startAutoAdvance() {
-      if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
-      autoAdvanceTimer = setInterval(() => {
-        if (isAutoPlaying) {
-          currentReview = (currentReview + 1) % reviews.length;
-          showReview(currentReview);
-        }
-      }, 5000); // Change review every 5 seconds
-    }
-    
-    function pauseAutoAdvance() {
-      isAutoPlaying = false;
-      setTimeout(() => {
-        isAutoPlaying = true;
-      }, 8000); // Resume auto-advance after 8 seconds
-    }
-    
-    // Add manual control pause functionality
-    const prevBtn = document.getElementById('prev-review');
-    const nextBtn = document.getElementById('next-review');
-    
-    prevBtn.onclick = function() {
-      pauseAutoAdvance();
-      currentReview = (currentReview - 1 + reviews.length) % reviews.length;
-      showReview(currentReview);
-    };
-    
-    nextBtn.onclick = function() {
-      pauseAutoAdvance();
-      currentReview = (currentReview + 1) % reviews.length;
-      showReview(currentReview);
-    };
-    
-    // Start auto-advance
-    startAutoAdvance();
-    </script>
 
-    <script>
-    // Initialize the horizontal reviews system
-    document.addEventListener('DOMContentLoaded', function() {
-      const reviews = [
-        { text: "Truly remarkable area where this cabin is located. I really enjoyed the seclusion from neighboring towns. Beautiful views and solid night of sleep. Cannot wait to come back.", name: "- Gabriel -Utah" },
-        { text: "We had a great time at this secluded, cute cabin. The cabin fit everyone comfortably and could have slept more. The location is so peaceful. All the horses on the property were a highlight. I wish we could have stayed longer", name: "Amy" },
-        { text: "Unplug and relax! We enjoyed a comfortable one night while passing through and even fit in a quick horseback ride.", name: "Kaci -Arkansas" },
-        { text: "We had a wonderful time at the ranch cabin. Charles was amazing. He took my 13-year-old daughter and I on a scenic horseback ride around the ranch, across two rivers and up to a mountain ridge so we could look down onto the beautiful valley below. He also got my daughter and my 9-year-old son all set to do some fishing in a nearby stream. The cabin was quiet and comfortable and we had a marvelous time. We hope to come back for a longer trip next time.", name: "Anne -North Carolina" },
-        { text: "We arrived at Charles' cabin in the dark on motorcycles, after a long day through beautiful Wyoming. So we awakened to a gorgeous morning with views of cattle grazing and the remote setting gave us a chance to hear the quiet of this place! Stunning views! The cabin was warm and has everything you need for rest, making meals and if wanted, a ride on horses! Highly recommend this place!", name: "Mark -Nevada" },
-        { text: "The food, the people, the views—everything was perfect.", name: "Matthew -Tennessee" },
-        { text: "We stayed a night at the ranch on our way back from a western loop for fall break with our family. We arranged to arrive early & Charles was so kind to take us on a horse ride and give fly fishing instruction that afternoon on his property. The reviews of how kind  and accommodating he is were spot on & my children will not forget this experience!  A class act & a true western experience in which we are very grateful!!", name: "Melissa -Tennessee" },
-        { text: "If you are looking for a ranch stay, this is your ticket! Quiet cabin with awesome views in all directions. Charles the host made sure all our needs were met. He was quick to communicate, and is honestly one of the nicest people you will ever meet. Charles lead our group on a horseback ride and we had an incredible time. This was a great stay! Thanks Charles!", name: "Thomas -Virginia" },
-        { text: "This was an amazing experience! The house is staying far from the town and it is so quiet! Charles is the greatest host I've ever met. We did horse riding and kayaking, he answered all our questions and did really take care of us) The place is great, especially if you'd like to escape from the city's business and temp of life! and the scenery is breathtaking!", name: "Elena -Israel" },
-        { text: "We loved our stay so much the first time, we decided to come back a second time! Charles is an outstanding host who goes above and beyond to ensure his guests have a fabulous experience at his ranch. Our children loved feeding the horses and getting in a ride.", name: "Shannon -Japan" }
-      ];
-      
-      let currentReviewIndex = 0;
-      let reviewAutoTimer;
-      let reviewIsAutoPlaying = true;
-      const reviewsTrack = document.getElementById('reviews-track');
-      const dotsContainer = document.getElementById('review-dots');
-      
-      // Create review cards and dots
-      function initializeHorizontalReviews() {
-        if (!reviewsTrack || !dotsContainer) return;
-        
-        // Create review cards
-        reviewsTrack.innerHTML = reviews.map((review, index) => `
-          <div class="review-card" style="
-            min-width: 100%; 
-            padding: 1.5em; 
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 200px;
-          ">
-            <blockquote style="
-              font-size: 1.1em; 
-              color: var(--dark-brown); 
-              font-style: italic; 
-              margin: 0 0 1em 0; 
-              line-height: 1.5;
-              text-align: center;
-              max-width: 700px;
-              margin: 0 auto 1em auto;
-            ">"${review.text}"</blockquote>
-            <div style="
-              text-align: center; 
-              font-size: 1em; 
-              color: var(--warm-brown); 
-              font-weight: 600;
-            ">${review.name}</div>
-          </div>
-        `).join('');
-        
-        // Create dots
-        dotsContainer.innerHTML = reviews.map((_, index) => `
-          <div class="review-dot" data-index="${index}" style="
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: ${index === 0 ? 'var(--warm-brown)' : 'var(--light-tan)'};
-            cursor: pointer;
-            transition: background 0.3s ease;
-            border: 2px solid var(--warm-brown);
-          "></div>
-        `).join('');
-        
-        // Add dot click handlers
-        document.querySelectorAll('.review-dot').forEach((dot, index) => {
-          dot.addEventListener('click', () => goToHorizontalReview(index));
-        });
-      }
-      
-      function updateHorizontalReviewDisplay() {
-        const translateX = -currentReviewIndex * 100;
-        reviewsTrack.style.transform = `translateX(${translateX}%)`;
-        
-        // Update dots
-        document.querySelectorAll('.review-dot').forEach((dot, index) => {
-          dot.style.background = index === currentReviewIndex ? 'var(--warm-brown)' : 'var(--light-tan)';
-        });
-      }
-      
-      function goToHorizontalReview(index) {
-        pauseHorizontalAutoAdvance();
-        currentReviewIndex = index;
-        updateHorizontalReviewDisplay();
-      }
-      
-      function nextHorizontalReview() {
-        currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
-        updateHorizontalReviewDisplay();
-      }
-      
-      function prevHorizontalReview() {
-        currentReviewIndex = (currentReviewIndex - 1 + reviews.length) % reviews.length;
-        updateHorizontalReviewDisplay();
-      }
-      
-      function startHorizontalAutoAdvance() {
-        if (reviewAutoTimer) clearInterval(reviewAutoTimer);
-        
-        reviewAutoTimer = setInterval(() => {
-          if (reviewIsAutoPlaying) {
-            nextHorizontalReview();
-          }
-        }, 6000);
-      }
-      
-      function pauseHorizontalAutoAdvance() {
-        reviewIsAutoPlaying = false;
-        setTimeout(() => {
-          reviewIsAutoPlaying = true;
-        }, 8000);
-      }
-      
-      // Event listeners for new review system
-      const prevReviewBtn = document.getElementById('prev-review');
-      const nextReviewBtn = document.getElementById('next-review');
-      
-      if (prevReviewBtn) {
-        prevReviewBtn.addEventListener('click', () => {
-          pauseHorizontalAutoAdvance();
-          prevHorizontalReview();
-        });
-      }
-      
-      if (nextReviewBtn) {
-        nextReviewBtn.addEventListener('click', () => {
-          pauseHorizontalAutoAdvance();
-          nextHorizontalReview();
-        });
-      }
-      
-      // Initialize
-      initializeHorizontalReviews();
-      startHorizontalAutoAdvance();
-    });
-    </script>
-
-    <section style="max-width:700px;margin:4em auto 2em auto;padding:2.5em 1.5em 2em 1.5em;background:var(--deep-forest);border-radius:16px;box-shadow:0 2px 12px rgba(32,92,32,0.13);text-align:center;">
-    <h2 class="cattle-brand" style="color:var(--cream);margin:0;font-size:2.1em;font-weight:900;letter-spacing:0.03em;text-shadow:1px 1px 6px rgba(0,0,0,0.22);">
-      Family Owned<br>
-      <span style="font-size:1.1em;font-weight:400;letter-spacing:0.01em;">For One Hundred And Thirteen Years</span>
-    </h2>
-  </section>
-
-  <section class="photo-row fade-in">
-    <div class="photo-row-container">
-      <img src="images/blackhorse.jpeg" alt="Black Horse" class="photo-row-img" loading="lazy">
-      <img src="images/theboys.jpg" alt="Cabin Group" class="photo-row-img" loading="lazy">
-      <img src="images/sunset.jpeg" alt="Sunset" class="photo-row-img" loading="lazy">
-      <img src="images/tractor.jpg" alt="Tractor" class="photo-row-img tractor-crop" loading="lazy">
-      <img src="images/oldbarn.jpg" alt="Old Barn" class="photo-row-img" loading="lazy">
-      <img src="images/groupcabin.JPG" alt="Group Cabin" class="photo-row-img" loading="lazy">
-      <img src="images/sublett.jpeg" alt="Sublett" class="photo-row-img" loading="lazy">
-      <img src="images/trae.jpeg" alt="Trae" class="photo-row-img" loading="lazy">
-      <img src="images/closeup.JPG" alt="Closeup" class="photo-row-img" loading="lazy">
-      <img src="images/truckdoor.jpg" alt="Truck Door" class="photo-row-img" loading="lazy">
-  <img src="images/TruckLogo.jpeg" alt="Truck Logo" class="photo-row-img" loading="lazy">
-  <img src="images/Grandma Lois Small.jpeg" alt="Grandma Lois" class="photo-row-img" loading="lazy">
-      <img src="images/boyson fence.jpg" alt="Boys on Fence" class="photo-row-img" loading="lazy">
-      <img src="images/oldgreen.jpg" alt="Old Green" class="photo-row-img" loading="lazy">
-      <img src="images/saddle.jpg" alt="Saddle" class="photo-row-img" loading="lazy">
-      <img src="images/sunset.jpeg" alt="Sunset 2" class="photo-row-img" loading="lazy">
-      <img src="images/blackhorse.jpeg" alt="Black Horse" class="photo-row-img" loading="lazy">
-      <img src="images/theboys.jpg" alt="Cabin Group" class="photo-row-img" loading="lazy">
-      <img src="images/sunset.jpeg" alt="Sunset" class="photo-row-img" loading="lazy">
-      <img src="images/tractor.jpg" alt="Tractor" class="photo-row-img tractor-crop" loading="lazy">
-      <img src="images/oldbarn.jpg" alt="Old Barn" class="photo-row-img" loading="lazy">
-      <img src="images/groupcabin.JPG" alt="Group Cabin" class="photo-row-img" loading="lazy">
-      <img src="images/sublett.jpeg" alt="Sublett" class="photo-row-img" loading="lazy">
-      <img src="images/trae.jpeg" alt="Trae" class="photo-row-img" loading="lazy">
-      <img src="images/closeup.JPG" alt="Closeup" class="photo-row-img" loading="lazy">
-      <img src="images/truckdoor.jpg" alt="Truck Door" class="photo-row-img" loading="lazy">
-      <img src="images/TruckLogo.jpeg" alt="Truck Logo" class="photo-row-img" loading="lazy">
-      <img src="images/boyson fence.jpg" alt="Boys on Fence" class="photo-row-img" loading="lazy">
-      <img src="images/oldgreen.jpg" alt="Old Green" class="photo-row-img" loading="lazy">
-      <img src="images/saddle.jpg" alt="Saddle" class="photo-row-img" loading="lazy">
-      <img src="images/sunset.jpeg" alt="Sunset 2" class="photo-row-img" loading="lazy">
-      <img src="images/Painting.jpeg" alt="Painting" class="photo-row-img" loading="lazy">
-    </div>
-  </section>
-  <script>
-    // Pulse the Home nav button twice on page load
-    window.addEventListener('DOMContentLoaded', function() {
-      var bookBtn = document.getElementById('bookNavBtn');
-      if (bookBtn) {
-        bookBtn.classList.add('pulse');
-        setTimeout(function() {
-          bookBtn.classList.remove('pulse');
-        }, 1200);
-      }
-    });
-  </script>
-  <footer class="footer">
-<script>
-  const ranchVideo = document.querySelector('video[src="images/ranchedit2.mov"]');
-  const videoSection = ranchVideo && ranchVideo.closest('section');
-  document.addEventListener('keydown', function(e) {
-    if (document.fullscreenElement === ranchVideo && e.code === 'Space') {
-      e.preventDefault();
-      if (ranchVideo.paused) {
-        ranchVideo.play();
-      } else {
-        ranchVideo.pause();
-      }
-    }
-  });
-  if (ranchVideo) {
-    ranchVideo.addEventListener('fullscreenchange', function() {
-      if (document.fullscreenElement === ranchVideo) {
-        ranchVideo.style.background = '#000';
-        if (videoSection) videoSection.style.background = '#000';
-      } else {
-        ranchVideo.style.background = '';
-        if (videoSection) videoSection.style.background = '';
-      }
-    });
-  }
-</script>
-    &copy; 2025 Cottonwood Ranch &mdash; Cokeville, Wyoming &mdash; All rights reserved.<br>
-    <div style="margin-top:1em;display:flex;gap:2em;justify-content:center;flex-wrap:wrap;">
-      <a href="contact.html">📧 Contact Us</a>
-      <a href="book.html">Book Now</a>
-      <span style="color:var(--light-tan);">📍 Cokeville, WY</span>
-    </div>
-  </footer>
-
-  <a href="book.html" class="floating-book-btn">Book Now</a>
-  
-  <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="background:var(--warm-brown);color:var(--cream);border:none;border-radius:50%;width:48px;height:48px;font-size:2em;font-weight:900;box-shadow:0 2px 8px rgba(93,78,55,0.18);display:flex;align-items:center;justify-content:center;line-height:1;">&#x25B2;</button>
-
-  <script>
-    // Show/hide scroll to top button
-    window.addEventListener('scroll', function() {
-      const scrollTop = document.querySelector('.scroll-top');
-      if (window.pageYOffset > 300) {
-        scrollTop.classList.add('visible');
-      } else {
-        scrollTop.classList.remove('visible');
-      }
-    });
-    
-    // Add smooth scrolling to all links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Cottonwood Ranch &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#f1989f979eb1859994929e85859e9f869e9e9583909
