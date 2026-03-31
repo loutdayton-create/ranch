@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Ranch — Cottonwood Ranch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:  #f7f2ea;
+      --tan:    #d9c9a8;
+      --sand:   #c4a97d;
+      --terra:  #c47a50;
+      --denim:  #7a8fa6;
+      --brown:  #6b4f35;
+      --dark:   #3a2a1a;
+      --text:   #4a3728;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(247, 242, 234, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--tan);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .brand-img {
+      display: block;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--tan), var(--sand));
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .brand-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-img .brand-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown);
+      opacity: 0.6;
+    }
+
+    .header-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--brown);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--terra); }
+    nav a.active { color: var(--terra); }
+
+    .nav-cta {
+      background: var(--terra);
+      color: #fff !important;
+      padding: 0.7rem 1.8rem;
+      border-radius: 2px;
+      letter-spacing: 0.12em;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--brown) !important; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 140px 4rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-bottom: 2px solid var(--tan);
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.15;
+      max-width: 18ch;
+    }
+
+    /* ── HISTORY ── */
+    .history {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .history-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .history-text .rule {
+      width: 40px;
+      height: 3px;
+      background: var(--terra);
+      margin-bottom: 2rem;
+    }
+
+    .history-text p {
+      font-size: 1.05rem;
+      line-height: 1.95;
+      color: var(--text);
+      font-weight: 400;
+      margin-bottom: 1.6rem;
+    }
+
+    .history-text p:last-child { margin-bottom: 0; }
+
+    .history-photo {
+      position: sticky;
+      top: 120px;
+    }
+
+    .history-photo .placeholder-block {
+      width: 100%;
+      height: 480px;
+      background: linear-gradient(160deg, var(--tan), var(--sand));
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.6rem;
+    }
+
+    .photo-caption {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--sand);
+      font-style: italic;
+      letter-spacing: 0.03em;
+    }
+
+    .placeholder-label {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown);
+      opacity: 0.6;
+      font-weight: 600;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--brown);
+      padding: 5rem 4rem;
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat {
+      border-left: 3px solid var(--terra);
+      padding-left: 1.2rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--cream);
+      margin-bottom: 0.35rem;
+    }
+
+    .stat span {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--tan);
+      line-height: 1.5;
+    }
+
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 0.75rem;
+    }
+
+    .photo-grid .img-box {
+      background: linear-gradient(160deg, var(--tan), var(--sand));
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .photo-grid .img-box.wide {
+      grid-column: span 2;
+      height: 300px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: var(--sand);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+
+    footer a { color: var(--sand); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-hero > * {
+      animation: fadeUp 0.6s ease both;
+    }
+    .page-hero > *:nth-child(1) { animation-delay: 0.1s; }
+    .page-hero > *:nth-child(2) { animation-delay: 0.22s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      header { padding: 1rem 1.5rem; }
+      nav { gap: 1.2rem; }
+      .page-hero { padding: 120px 2rem 3rem; }
+      .history { grid-template-columns: 1fr; padding: 3rem 2rem; gap: 2rem; }
+      .history-photo { position: static; }
+      .history-photo .placeholder-block { height: 280px; }
+      .stats { padding: 3rem 2rem; }
+      .stats-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .photo-grid { grid-template-columns: 1fr; padding: 3rem 2rem; }
+      .photo-grid .img-box.wide { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="brand-img">
+        <img src="images/logo.jpg" alt="Cottonwood Ranch" />
+      </a>
+      <a href="index.html" class="header-logo">Cottonwood Ranch</a>
+    </div>
+    <nav>
+      <a href="about.html" class="active">Our Ranch</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="booking.html" class="nav-cta">Book a Stay</a>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>A Ranch Built on Hard Work.</h1>
+  </div>
+
+  <!-- HISTORY -->
+  <section class="history">
+    <div class="history-text">
+      <h2>Our History</h2>
+      <div class="rule"></div>
+      <p>The Cottonwood Ranch is a historic, family-owned cattle ranch that has been under the stewardship of the Dayton family for 114 years. Over that time, this land has worn many hats — beef cow operation, dairy farm, alfalfa fields, horse ranch — and today it continues as a working ranch, home to beef cattle, horses, and a thriving alfalfa farm.</p>
+      <p>This ranch has been handed down from parent to child across six generations, with no signs of stopping. It's true, the ranch has seen better years — economic shifts and extreme weather have taken their toll — but the rugged cowboy spirit still endures on the Cottonwood Ranch, and things are looking up. That authenticity is exactly what sets us apart from a fancy, expensive dude ranch. What you find here is the real thing.</p>
+      <p>Since the days of the Great Depression, the Cottonwood Ranch has welcomed those passing through, whether for work or for pleasure. For the past decade we've been opening our gates to travelers from all over the world, offering them a good place to rest, rides across the Bear River on horseback, and an honest look at what Wyoming really is.</p>
+    </div>
+    <div class="history-photo">
+      <div class="placeholder-block">
+        <img src="images/glois.jpeg" alt="Historic ranch photo" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+      <p class="photo-caption">Grandma Lois and her cousins going for a ride on the Cottonwood Ranch, circa 1914.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="stat">
+        <strong>Cattle Ranch</strong>
+        <span>Working herd, year-round operation</span>
+      </div>
+      <div class="stat">
+        <strong>Horses</strong>
+        <span>Bred and worked on the property</span>
+      </div>
+      <div class="stat stat-flag">
+        <img src="images/wyoflag.png" alt="Wyoming State Flag" style="height:54px;width:auto;display:block;margin-bottom:0.5rem;" />
+        <span>Wide open range, big sky country</span>
+      </div>
+      <div class="stat">
+        <strong>Family Run</strong>
+        <span>The Daytons — no corporate, no gimmicks</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO GRID -->
+  <div class="photo-grid">
+    <div class="img-box wide">
+      <img src="images/fog.jpeg" alt="Cottonwood Ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    </div>
+    <div class="img-box">
+      <img src="images/painters2.jpeg" alt="Cottonwood Ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    </div>
+    <div class="img-box">
+      <img src="images/lakota.jpg" alt="Cottonwood Ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Cottonwood Ranch &nbsp;|&nbsp; <a href="mailto:info@thecottonwoodranch.com">info@thecottonwoodranch.com</a></p>
+  </footer>
+
+</body>
+</html>
