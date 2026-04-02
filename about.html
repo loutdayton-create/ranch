@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Ranch — Cottonwood Ranch</title>
+  <title>Contact Us — Cottonwood Ranch</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -67,20 +67,6 @@
       display: block;
     }
 
-    .brand-img .brand-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--brown);
-      opacity: 0.6;
-    }
-
     .header-logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.9rem;
@@ -121,148 +107,170 @@
 
     .nav-cta:hover { background: var(--brown) !important; }
 
-    /* ── PAGE HERO ── */
+    /* ── HERO ── */
     .page-hero {
-      padding: 140px 4rem 5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      border-bottom: 2px solid var(--tan);
+      position: relative;
+      height: 65vh;
+      min-height: 460px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 4rem 4rem;
+      margin-top: 0;
     }
 
-    .page-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 4vw, 3.6rem);
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/blmsunset.jpeg');
+      background-size: cover;
+      background-position: center 20%;
+      z-index: 0;
+    }
+
+    .page-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,18,8,0.72) 0%, rgba(30,18,8,0.1) 100%);
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      padding-top: 90px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--sand);
       font-weight: 600;
-      color: var(--dark);
-      line-height: 1.15;
-      max-width: 18ch;
+      margin-bottom: 0.8rem;
     }
 
-    /* ── HISTORY ── */
-    .history {
-      max-width: 1200px;
+    .page-hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 4vw, 3.8rem);
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.15;
+    }
+
+    /* ── CONTACT SECTION ── */
+    .contact {
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 5rem 4rem;
+      padding: 6rem 4rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
       align-items: start;
     }
 
-    .history-text h2 {
+    .contact-col h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 600;
       color: var(--dark);
-      line-height: 1.2;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
-    .history-text .rule {
+    .contact-col .rule {
       width: 40px;
       height: 3px;
       background: var(--terra);
       margin-bottom: 2rem;
     }
 
-    .history-text p {
-      font-size: 1.05rem;
-      line-height: 1.95;
-      color: var(--text);
-      font-weight: 400;
-      margin-bottom: 1.6rem;
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 1.8rem;
     }
 
-    .history-text p:last-child { margin-bottom: 0; }
-
-    .history-photo {
-      position: sticky;
-      top: 120px;
-    }
-
-    .history-photo .placeholder-block {
-      width: 100%;
-      height: 480px;
-      background: linear-gradient(160deg, var(--tan), var(--sand));
-      border-radius: 3px;
-      overflow: hidden;
-      margin-bottom: 0.6rem;
-    }
-
-    .photo-caption {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--sand);
-      font-style: italic;
-      letter-spacing: 0.03em;
-    }
-
-    .placeholder-label {
-      font-size: 0.82rem;
+    .contact-item strong {
+      font-size: 0.78rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--brown);
-      opacity: 0.6;
+      color: var(--sand);
       font-weight: 600;
     }
 
-    /* ── STATS ── */
-    .stats {
-      background: var(--brown);
-      padding: 5rem 4rem;
+    .contact-item a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
-    .stats-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
+    .contact-item a:hover { color: var(--terra); }
 
-    .stat {
-      border-left: 3px solid var(--terra);
-      padding-left: 1.2rem;
-    }
-
-    .stat strong {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      color: var(--cream);
-      margin-bottom: 0.35rem;
-    }
-
-    .stat span {
-      font-size: 0.88rem;
-      font-weight: 500;
+    .contact-item span {
+      font-size: 1.1rem;
+      font-weight: 600;
       color: var(--tan);
-      line-height: 1.5;
     }
 
-    /* ── PHOTO GRID ── */
-    .photo-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 5rem 4rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 280px 280px;
-      gap: 0.75rem;
+    /* ── SOCIAL CARDS ── */
+    .social-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .photo-grid .img-box {
-      background: linear-gradient(160deg, var(--tan), var(--sand));
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      border: 2px solid var(--tan);
       border-radius: 3px;
+      text-decoration: none;
+      color: var(--dark);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .social-card:hover {
+      border-color: var(--terra);
+      background: rgba(196, 122, 80, 0.05);
+    }
+
+    .social-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      background: var(--tan);
+      border-radius: 50%;
     }
 
-    .photo-grid .img-box.wide {
-      grid-column: span 2;
-      height: 300px;
+    .social-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--brown);
+    }
+
+    .social-info strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .social-info span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--sand);
+    }
+
+    .social-card.placeholder {
+      opacity: 0.45;
+      pointer-events: none;
     }
 
     /* ── FOOTER ── */
@@ -284,24 +292,18 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .page-hero > * {
+    .page-hero-content > * {
       animation: fadeUp 0.6s ease both;
     }
-    .page-hero > *:nth-child(1) { animation-delay: 0.1s; }
-    .page-hero > *:nth-child(2) { animation-delay: 0.22s; }
+    .page-hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .page-hero-content > *:nth-child(2) { animation-delay: 0.22s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       header { padding: 1rem 1.5rem; }
       nav { gap: 1.2rem; }
-      .page-hero { padding: 120px 2rem 3rem; }
-      .history { grid-template-columns: 1fr; padding: 3rem 2rem; gap: 2rem; }
-      .history-photo { position: static; }
-      .history-photo .placeholder-block { height: 280px; }
-      .stats { padding: 3rem 2rem; }
-      .stats-inner { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-      .photo-grid { grid-template-columns: 1fr; padding: 3rem 2rem; }
-      .photo-grid .img-box.wide { grid-column: span 1; }
+      .page-hero { padding: 0 2rem 3rem; }
+      .contact { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
     }
   </style>
 </head>
@@ -316,73 +318,78 @@
       <a href="index.html" class="header-logo">Cottonwood Ranch</a>
     </div>
     <nav>
-      <a href="about.html" class="active">Our Ranch</a>
-      <a href="contact.html">Contact Us</a>
+      <a href="about.html">Our Ranch</a>
+      <a href="contact.html" class="active">Contact Us</a>
       <a href="booking.html" class="nav-cta">Book a Stay</a>
     </nav>
   </header>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <h1>A Ranch Built on Hard Work.</h1>
-  </div>
-
-  <!-- HISTORY -->
-  <section class="history">
-    <div class="history-text">
-      <h2>Our History</h2>
-      <div class="rule"></div>
-      <p>The Cottonwood Ranch is a historic, family-owned cattle ranch that has been under the stewardship of the Dayton family for 114 years. Over that time, this land has worn many hats — beef cow operation, dairy farm, alfalfa fields, horse ranch — and today it continues as a working ranch, home to beef cattle, horses, and a thriving alfalfa farm.</p>
-      <p>This ranch has been handed down from parent to child across six generations, with no signs of stopping. It's true, the ranch has seen better years — economic shifts and extreme weather have taken their toll — but the rugged cowboy spirit still endures on the Cottonwood Ranch, and things are looking up. That authenticity is exactly what sets us apart from a fancy, expensive dude ranch. What you find here is the real thing.</p>
-      <p>Since the days of the Great Depression, the Cottonwood Ranch has welcomed those passing through, whether for work or for pleasure. For the past decade we've been opening our gates to travelers from all over the world, offering them a good place to rest, rides across the Bear River on horseback, and an honest look at what Wyoming really is.</p>
-    </div>
-    <div class="history-photo">
-      <div class="placeholder-block">
-        <img src="images/Grandma Lois Small.jpeg" alt="Historic ranch photo" style="width:100%;height:100%;object-fit:cover;display:block;" />
-      </div>
-      <p class="photo-caption">Grandma Lois and her cousins going for a ride on the Cottonwood Ranch, circa 1914.</p>
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <h1>Get in Touch</h1>
     </div>
   </section>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stats-inner">
-      <div class="stat">
-        <strong>Cattle Ranch</strong>
-        <span>Working herd, year-round operation</span>
-      </div>
-      <div class="stat">
-        <strong>Horses</strong>
-        <span>Bred and worked on the property</span>
-      </div>
-      <div class="stat stat-flag">
-        <img src="images/wyoflag.png" alt="Wyoming State Flag" style="height:54px;width:auto;display:block;margin-bottom:0.5rem;" />
-        <span>Wide open range, big sky country</span>
-      </div>
-      <div class="stat">
-        <strong>Family Run</strong>
-        <span>The Daytons — no corporate, no gimmicks</span>
-      </div>
-    </div>
-  </div>
+  <!-- CONTACT -->
+  <div class="contact">
 
-  <!-- PHOTO GRID -->
-  <div class="photo-grid">
-    <div class="img-box wide">
-      <img src="images/fog.jpeg" alt="Cottonwood Ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    <!-- EMAIL -->
+    <div class="contact-col">
+      <h2>Reach Us Directly</h2>
+      <div class="rule"></div>
+      <div class="contact-item">
+        <strong>General Inquiries</strong>
+        <a href="mailto:info@thecottonwoodranch.com">info@thecottonwoodranch.com</a>
+      </div>
+      <div class="contact-item">
+        <strong>Booking</strong>
+        <a href="mailto:booking@thecottonwoodranch.com">booking@thecottonwoodranch.com</a>
+      </div>
+      <p style="font-size:0.92rem;font-weight:600;color:var(--text);line-height:1.7;margin-top:0.5rem;">All emails are answered personally by the Dayton family — replies will come from their personal email addresses.</p>
     </div>
-    <div class="img-box">
-      <img src="images/painters2.jpeg" alt="Cottonwood Ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
-    </div>
-    <div class="img-box">
-      <img src="images/lakota.jpg" alt="Cottonwood Ranch" style="width:100%;height:100%;object-fit:cover;display:block;" />
-    </div>
-  </div>
 
-  <!-- FOOTER -->
+    <!-- SOCIALS -->
+    <div class="contact-col">
+      <h2>Find Us Online</h2>
+      <div class="rule"></div>
+      <div class="social-grid">
+
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/cottonwoodranchwy/" target="_blank" class="social-card">
+          <div class="social-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <strong>Instagram</strong>
+            <span>@cottonwoodranchwy</span>
+          </div>
+        </a>
+
+        <!-- YOUTUBE -->
+        <a href="https://www.youtube.com/@DontQuitYourDayJob-CWR" target="_blank" class="social-card">
+          <div class="social-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <strong>YouTube</strong>
+            <span>@DontQuitYourDayJob-CWR</span>
+          </div>
+        </a>
+
+        <!-- TIKTOK -->
+        <a href="https://www.tiktok.com/@cottonwoodranchwy" target="_blank" class="social-card">
+          <div class="social-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <strong>TikT  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Cottonwood Ranch &nbsp;|&nbsp; <a href="mailto:info@thecottonwoodranch.com">info@thecottonwoodranch.com</a></p>
-  </footer>
-
-</body>
-</html>
+    <p>&copy; 2025 Cottonwood Ranch &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#6801060e07281c000d0b071c1c07061f07070c1a09060b00460b0705"><span class="_
